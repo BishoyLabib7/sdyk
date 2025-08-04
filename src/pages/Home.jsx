@@ -1,16 +1,20 @@
 import React from "react";
 import Hero from "../feathers/home/Hero";
 import Navbar from "../feathers/home/Navbar";
+import Categories from "../feathers/home/Categories";
+import Offers from "../feathers/home/Offers";
 
 export default function Home() {
   return (
-    <div className="m-8">
-      <header className="w-full h-screen">
-        <div className="bg-[url(/background-hero.png)] no-repeat bg-cover bg-center">
-          <Navbar />
-          <Hero />
-        </div>
+    <div className="w-full h-screen ">
+      <header className="bg-[url(/background-hero.png)] bg-no-repeat bg-cover md:m-8">
+        <Navbar />
+        <Hero />
       </header>
+      <main>
+        <Categories />
+        <Offers />
+      </main>
     </div>
   );
 }
