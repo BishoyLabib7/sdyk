@@ -63,16 +63,16 @@ export default function Categories() {
       <div className="w-full flex lg:flex-row-reverse flex-col flex-wrap items-center justify-start gap-30 ">
         <div className="lg:w-[10%] w-[60%] py-10 bg-[#525D53] rounded-4xl lg:rounded-r-none ">
           <ul className=" flex lg:flex-col md:flex-row-reverse flex-col items-end lg:justify-start justify-center gap-3">
-            <li className="bg-[#ffede8] rounded-tl-4xl rounded-bl-4xl  py-5 lg:px-10 md:px-5 px-15 text-[#222222] mb-2 cursor-pointer ">
+            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 lg:px-10 md:px-5 px-15 text-[#222222] mb-2 cursor-pointer ">
               جمعيات
             </li>
-            <li className="bg-[#ffede8] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
+            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
               مشاريع
             </li>
-            <li className="bg-[#ffede8] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
+            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
               اعلانات
             </li>
-            <li className="bg-[#ffede8] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
+            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
               اخرى
             </li>
           </ul>
