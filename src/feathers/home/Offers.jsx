@@ -1,6 +1,6 @@
 import Slider from "react-slick";
-import OfferCard from "./OfferCard";
-import SampleNextArrow from "./Arrows";
+import SampleNextArrow from "../../components/Arrows";
+import Card from "../../components/Card";
 
 const offers = [
   {
@@ -87,7 +87,7 @@ export default function SimpleSlider() {
       <Slider className="w-[80%] mx-auto  " {...settings}>
         {offers.map((offer) => (
           <div>
-            <OfferCard
+            <Card
               title={offer.title}
               description={offer.description}
               name={offer.name}

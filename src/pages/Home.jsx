@@ -23,6 +23,11 @@ export default function Home() {
         <Advertisement />
         <News />
       </main>
+      <footer>
+        <div className="bg-gray-800 text-white text-center p-4">
+          © 2023 Your Company Name. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }

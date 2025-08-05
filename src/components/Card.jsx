@@ -1,12 +1,13 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
-export default function OfferCard({
+export default function Card({
   title,
   description,
   name,
   image,
   userImage,
+  num = "4.86",
 }) {
   return (
     <div className="bg-white m-3 rounded-2xl">
@@ -17,8 +18,8 @@ export default function OfferCard({
       </div>
       <div className="flex flex-col justify-end p-4">
         <div className="flex items-center gap-2">
-          <FaStar className="text-yellow-300" />
-          <span> 4.82</span>
+          {num === 4.89 && <FaStar className="text-yellow-300" />}
+          <span> {num}</span>
         </div>
         {name && (
           <div className="border-t border-gray-300 my-2 pt-3 flex  items-center gap-3 ">

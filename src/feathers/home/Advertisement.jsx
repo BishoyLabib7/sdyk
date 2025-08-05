@@ -44,24 +44,24 @@ export default function Advertisement() {
   };
 
   return (
-    <div className="w-full bg-themepurple lg:px-20 px-3 py-10 m-auto">
+    <div className="w-full bg-themepurple py-10">
       <Slider className="w-full" {...settings}>
         <div>
           <img
             src={client1}
-            className="w-[100%] cursor-pointer transition-all duration-300 hover:scale-110"
+            className="w-[100%] size-50 cursor-pointer transition-all duration-300 hover:scale-110"
           />
         </div>
         <div>
           <img
             src={client2}
-            className="w-[100%]  cursor-pointer transition-all duration-300 hover:scale-110"
+            className="w-[100%] size-50 cursor-pointer transition-all duration-300 hover:scale-110"
           />
         </div>{" "}
         <div>
           <img
             src={client3}
-            className="w-[100%] cursor-pointer transition-all duration-300 hover:scale-110"
+            className="w-[100%] size-50 cursor-pointer transition-all duration-300 hover:scale-110"
           />{" "}
         </div>
       </Slider>

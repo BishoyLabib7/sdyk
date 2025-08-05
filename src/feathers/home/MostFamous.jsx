@@ -1,9 +1,8 @@
-import React from "react";
-import OfferCard from "./OfferCard";
-import SampleNextArrow from "./Arrows";
+import SampleNextArrow from "../../components/Arrows";
 import Slider from "react-slick";
+import Card from "../../components/Card";
 
-const offers = [
+const famous = [
   {
     title: "الدكتور احمد عبدالمنعم ",
     description: "اقدم خبرات في تصميم المواقع",
@@ -68,13 +67,13 @@ export default function MostFamous() {
     <div className="flex flex-col items-center justify-between  gap-10 m-40">
       <div className=" w-[80%] text-right p-8">
         <h2 className="text-2xl font-bold text-gray-800">
-          اشهر الخبرات التي تم تقدمها
+          اشهر مقدمين الخبرات
         </h2>
       </div>
       <Slider className="w-[80%] mx-auto  " {...settings}>
-        {offers.map((offer) => (
+        {famous.map((offer) => (
           <div>
-            <OfferCard
+            <Card
               title={offer.title}
               description={offer.description}
               name={offer.name}
