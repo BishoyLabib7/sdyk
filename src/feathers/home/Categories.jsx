@@ -5,6 +5,7 @@ import { MdDesignServices, MdOutlineEngineering } from "react-icons/md";
 import { LiaFileVideoSolid, LiaLaptopCodeSolid } from "react-icons/lia";
 import { GiBugleCall, GiNetworkBars } from "react-icons/gi";
 import { AiFillAudio } from "react-icons/ai";
+import { Link } from "react-router";
 
 const Category = [
   {
@@ -56,26 +57,38 @@ export default function Categories() {
         <h2 className="text-2xl font-bold text-gray-800">
           تصفح المواهب حسب الفئة
         </h2>
-        <a href="">
+        <Link to="services">
           <p className=" text-gray-600 lg:block hidden">&#8592; التخصصات </p>
-        </a>
+        </Link>
       </div>
       <div className="w-full flex lg:flex-row-reverse flex-col flex-wrap items-center justify-start gap-30 ">
         <div className="lg:w-[10%] w-[60%] py-10 bg-[#525D53] rounded-4xl lg:rounded-r-none ">
-          <ul className=" flex lg:flex-col md:flex-row-reverse flex-col items-end lg:justify-start justify-center gap-3">
-            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 lg:px-10 md:px-5 px-15 text-[#222222] mb-2 cursor-pointer ">
+          <div className=" flex lg:flex-col md:flex-row-reverse flex-col items-end lg:justify-start justify-center gap-3">
+            <Link
+              to="groups"
+              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 lg:px-10 md:px-5 px-15 text-[#222222] mb-2 cursor-pointer "
+            >
               جمعيات
-            </li>
-            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
+            </Link>
+            <Link
+              to="projects"
+              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer "
+            >
               مشاريع
-            </li>
-            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
+            </Link>
+            <Link
+              to="ads"
+              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer "
+            >
               اعلانات
-            </li>
-            <li className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer ">
+            </Link>
+            <Link
+              to="other"
+              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer "
+            >
               اخرى
-            </li>
-          </ul>
+            </Link>
+          </div>
         </div>
         <div className="w-[70%] grid md:grid-cols-4  gap-6">
           {Category.map((category, index) => (

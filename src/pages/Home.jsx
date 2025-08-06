@@ -11,11 +11,7 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="w-full h-screen ">
-      <header className="bg-[url(/background-hero.png)] bg-no-repeat bg-cover md:m-8">
-        <Navbar />
-        <Hero />
-      </header>
+    <>
       <main>
         <Categories />
         <Offers />
@@ -24,9 +20,6 @@ export default function Home() {
         <Advertisement />
         <News />
       </main>
-      <footer className="p-3">
-        <Footer />
-      </footer>
-    </div>
+    </>
   );
 }

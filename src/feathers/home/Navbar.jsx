@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../components/Button";
 import { FiMenu } from "react-icons/fi";
+import { Link, NavLink } from "react-router";
 
 export default function Navbar() {
   const [navbar, setNavbar] = React.useState(false);
@@ -27,7 +28,10 @@ export default function Navbar() {
           <img className="size-18" src="/logo.png" alt="" />
 
           <div className="flex flex-row-reverse items-center gap-4">
-            <Button text="انضمام" style="lg:hidden block" />
+            <Link to="/signup">
+              {" "}
+              <Button text="انضمام" style="lg:hidden block" />
+            </Link>
 
             <FiMenu
               className={`size-10 lg:hidden block ${
@@ -38,53 +42,62 @@ export default function Navbar() {
           </div>
         </div>
 
-        <nav
+        <NavLink
           className={`lg:ml-auto lg:mr-4 lg:py-1 lg:pr-4 lg:border-r lg:border-gray-400	 lg:flex-row-reverse flex-col items-center text-xl justify-between cursor-pointer gap-10 lg:flex  ${
             minbar ? "flex " : "hidden"
           }  ${
             navbar ? "text-[#222222]" : " text-[#ffede8]"
           }  transition-all duration-300`}
         >
-          <a
+          <Link
+            to="/"
             className={`mr-5 ${
               navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
             }`}
           >
             الرئيسيه
-          </a>
-          <a
+          </Link>
+          <Link
+            to="/shop"
             className={`mr-5 ${
               navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
             }`}
           >
             المتجر
-          </a>
-          <a
+          </Link>
+          <Link
+            to="/ads"
             className={`mr-5 ${
               navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
             }`}
           >
             بطاقات الخصم{" "}
-          </a>
-          <a
+          </Link>
+          <Link
+            to="/news"
             className={`mr-5 ${
               navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
             }`}
           >
             الاخبار
-          </a>
-          <a
+          </Link>
+          <Link
+            to="/services"
             className={`mr-5 ${
               navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
             }`}
           >
             الخبرات
-          </a>
-        </nav>
+          </Link>
+        </NavLink>
 
         <div className="lg:flex flex-row-reverse justify-between items-center gap-4 hidden">
-          <Button text="انضمام" />
-          <Button text="تسجيل دخول" type="secounder" reverse={navbar} />
+          <Link to="/signup">
+            <Button text="انضمام" />
+          </Link>
+          <Link to="/login">
+            <Button text="تسجيل دخول" type="secounder" reverse={navbar} />
+          </Link>
         </div>
       </div>
     </div>

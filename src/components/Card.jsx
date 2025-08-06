@@ -1,5 +1,6 @@
-import React from "react";
+import React, { use } from "react";
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 export default function Card({
   title,
@@ -8,9 +9,14 @@ export default function Card({
   image,
   userImage,
   num = "4.86",
+  type = "offer",
 }) {
+  const navigate = useNavigate();
   return (
-    <div className="bg-white m-3 rounded-2xl">
+    <div
+      className="bg-white m-3 rounded-2xl cursor-pointer"
+      onClick={() => navigate(`/${type}`)}
+    >
       <div className=" flex flex-col items-end justify-end p-4 gap-3 ">
         <img className="rounded-2xl " src={image} alt="" />
         <h3 className="text-sm font-semibold text-gray-400 ">{title}</h3>

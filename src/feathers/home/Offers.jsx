@@ -93,6 +93,7 @@ export default function SimpleSlider() {
               name={offer.name}
               userImage={offer.userImage}
               image={offer.image}
+              type="offer"
             />
           </div>
         ))}

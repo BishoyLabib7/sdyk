@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../components/Button";
+import { Link } from "react-router";
 
 export default function Hero() {
   return (
@@ -14,12 +15,16 @@ export default function Hero() {
           </h1>
 
           <div className="flex md:flex-row-reverse gap-6" flex-col>
-            <Button text="انضم كخبير" style="py-4" />
-            <Button
-              text="اكتشف خبرات"
-              type="secounder"
-              style="hover:bg-[#5bbb7b61] md:text-amber-50 text-[#222222]"
-            />
+            <Link to="/signup">
+              <Button text="انضم كخبير" style="py-4" />
+            </Link>
+            <Link to="/services">
+              <Button
+                text="اكتشف خبرات"
+                type="secounder"
+                style="hover:bg-[#5bbb7b61] md:text-amber-50 text-[#222222]"
+              />
+            </Link>
           </div>
         </div>
       </div>

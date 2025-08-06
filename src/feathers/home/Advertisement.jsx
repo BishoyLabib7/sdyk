@@ -4,6 +4,7 @@ import client2 from "/Advertisement/ads_2.jpg";
 import client3 from "/Advertisement/ads_3.png";
 
 import Slider from "react-slick";
+import { Link } from "react-router";
 
 export default function Advertisement() {
   const settings = {
@@ -46,24 +47,24 @@ export default function Advertisement() {
   return (
     <div className="w-full bg-themepurple py-10">
       <Slider className="w-full" {...settings}>
-        <div>
+        <Link to="/advertisement">
           <img
             src={client1}
             className="w-[100%] size-50 cursor-pointer transition-all duration-300 hover:scale-110"
           />
-        </div>
-        <div>
+        </Link>
+        <Link to="/advertisement">
           <img
             src={client2}
             className="w-[100%] size-50 cursor-pointer transition-all duration-300 hover:scale-110"
           />
-        </div>{" "}
-        <div>
+        </Link>{" "}
+        <Link to="/advertisement">
           <img
             src={client3}
             className="w-[100%] size-50 cursor-pointer transition-all duration-300 hover:scale-110"
           />{" "}
-        </div>
+        </Link>
       </Slider>
     </div>
   );

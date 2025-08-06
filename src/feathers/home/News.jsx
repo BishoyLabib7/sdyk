@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import SampleNextArrow from "../../components/Arrows";
 import Card from "../../components/Card";
+import { Link } from "react-router";
 
 const news = [
   {
@@ -77,9 +78,9 @@ export default function News() {
           <p className="text-right">كل الفعليات الجديده و المتاحه من خلالنا</p>
         </div>
 
-        <a href="">
+        <Link to="news">
           <p className=" text-gray-600 lg:block hidden">&#8592; باقي الاخبار</p>
-        </a>
+        </Link>
       </div>
 
       <Slider className="w-[80%] mx-auto  " {...settings}>
@@ -92,6 +93,7 @@ export default function News() {
               userImage={offer.userImage}
               image={offer.image}
               num={offer.num}
+              type="news"
             />
           </div>
         ))}

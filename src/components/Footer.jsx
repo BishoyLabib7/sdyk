@@ -5,7 +5,7 @@ import { IoLogoGooglePlaystore } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <div className=" text-white p-4 m-8 rounded-4xl backgroud-clip flex flex-col items-center justify-center">
+    <div className=" text-white p-4 lg:m-8 rounded-4xl backgroud-clip flex flex-col items-center justify-center">
       <div className="flex lg:flex-row-reverse flex-col items-center justify-between w-[80%] mt-40 border-b-2 border-[#5b665c] pb-4 lg:gap-0 gap-10">
         <div className="flex items-start gap-10 font-bold">
           <h3>شروط الخدمة</h3>

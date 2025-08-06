@@ -79,6 +79,7 @@ export default function MostFamous() {
               name={offer.name}
               userImage={offer.userImage}
               image={offer.image}
+              type="famous"
             />
           </div>
         ))}
