@@ -64,7 +64,7 @@ export default function MostFamous() {
     ],
   };
   return (
-    <div className="flex flex-col items-center justify-between  gap-10 m-40">
+    <div className="flex flex-col items-center justify-between  gap-10 my-40">
       <div className=" w-[80%] text-right p-8">
         <h2 className="text-2xl font-bold text-gray-800">
           اشهر مقدمين الخبرات

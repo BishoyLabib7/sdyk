@@ -7,6 +7,7 @@ import Services from "../feathers/home/Services";
 import MostFamous from "../feathers/home/MostFamous";
 import Advertisement from "../feathers/home/Advertisement";
 import News from "../feathers/home/News";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -23,10 +24,8 @@ export default function Home() {
         <Advertisement />
         <News />
       </main>
-      <footer>
-        <div className="bg-gray-800 text-white text-center p-4">
-          © 2023 Your Company Name. All rights reserved.
-        </div>
+      <footer className="p-3">
+        <Footer />
       </footer>
     </div>
   );

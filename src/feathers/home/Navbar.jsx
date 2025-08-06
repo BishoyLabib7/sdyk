@@ -18,7 +18,7 @@ export default function Navbar() {
     <div
       className={`w-full lg:text-amber-50 body-font  ${
         navbar
-          ? "bg-[#ffede8] !text-[#222222] fixed top-0 left-0 z-50 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
+          ? "bg-[#ffede8] !text-[#222222] fixed top-0 left-0 z-100 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
           : "bg-transparent"
       } transition-all duration-300`}
     >
