@@ -61,45 +61,15 @@ export default function Categories() {
           <p className=" text-gray-600 lg:block hidden">&#8592; التخصصات </p>
         </Link>
       </div>
-      <div className="w-full flex lg:flex-row-reverse flex-col flex-wrap items-center justify-start gap-30 ">
-        <div className="lg:w-[10%] w-[60%] py-10 bg-[#525D53] rounded-4xl lg:rounded-r-none ">
-          <div className=" flex lg:flex-col md:flex-row-reverse flex-col items-end lg:justify-start justify-center gap-3">
-            <Link
-              to="groups"
-              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 lg:px-10 md:px-5 px-15 text-[#222222] mb-2 cursor-pointer "
-            >
-              جمعيات
-            </Link>
-            <Link
-              to="projects"
-              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer "
-            >
-              مشاريع
-            </Link>
-            <Link
-              to="ads"
-              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer "
-            >
-              اعلانات
-            </Link>
-            <Link
-              to="other"
-              className="bg-[#ffede8] w-[80%] rounded-tl-4xl rounded-bl-4xl  py-5 llg:px-10 md:px-5 px-15  text-[#222222] mb-2 cursor-pointer "
-            >
-              اخرى
-            </Link>
-          </div>
-        </div>
-        <div className="w-[70%] grid md:grid-cols-4  gap-6">
-          {Category.map((category, index) => (
-            <CategoryCard
-              key={index}
-              icon={category.icon}
-              title={category.title}
-              descraption={category.description}
-            />
-          ))}
-        </div>
+      <div className="w-[70%] grid md:grid-cols-4 gap-6">
+        {Category.map((category, index) => (
+          <CategoryCard
+            key={index}
+            icon={category.icon}
+            title={category.title}
+            descraption={category.description}
+          />
+        ))}
       </div>
     </div>
   );

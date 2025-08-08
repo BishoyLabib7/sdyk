@@ -7,7 +7,7 @@ import Hero from "../feathers/home/Hero";
 export default function AppLayout() {
   return (
     <div className="w-full h-screen ">
-      <header className="bg-[url(/background-hero.png)] bg-no-repeat bg-cover md:mx-8 md:mt-8">
+      <header className="bg-[url(/background-hero.png)] bg-no-repeat bg-cover md:mx-8 md:mt-8 lg:h-screen h-[120vh]">
         <Navbar /> <Hero />
       </header>
       <Outlet />

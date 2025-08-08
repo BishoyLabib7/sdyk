@@ -16,13 +16,13 @@ export default function Hero() {
 
           <div className="flex md:flex-row-reverse gap-6" flex-col>
             <Link to="/signup">
-              <Button text="انضم كخبير" style="py-4" />
+              <Button text="انضم كخبير" />
             </Link>
             <Link to="/services">
               <Button
                 text="اكتشف خبرات"
                 type="secounder"
-                style="hover:bg-[#5bbb7b61] md:text-amber-50 text-[#222222]"
+                style="hover:bg-[#5bbb7b61] text-amber-50 text-[#222222] "
               />
             </Link>
           </div>
