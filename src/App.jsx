@@ -3,6 +3,7 @@ import Loading from "./pages/Loading";
 import { BrowserRouter, Route, Routes } from "react-router";
 import NotFound from "./pages/NotFound.jsx";
 import AppLayout from "./components/AppLayout.jsx";
+import Experiences from "./pages/Experiences.jsx";
 const Home = lazy(() => import("./pages/Home.jsx"));
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Home />} />
+              <Route path="services" element={<Experiences />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

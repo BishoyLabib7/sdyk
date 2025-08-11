@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router";
-function Sidebar({ close }) {
+function Sidebar({ close, type }) {
   const navItems = [
     { name: "الرئيسيه", link: "/" },
     { name: "المتجر", link: "shop" },
@@ -9,8 +9,8 @@ function Sidebar({ close }) {
   ];
   return (
     <div className="w-52 flex flex-col justify-start items-center gap-1 px-1 py-1l bg-[#ffede8] fixed h-full z-[100] right-0 shadow-2xl shadow-[rgba(91, 187, 123, 0.15)]">
-      <img className="size-18 mt-4" src="/logo.png" alt="" />
-      <NavLink className="flex flex-col justify-end items-end gap-8 mt-10">
+      {type && <img className="size-18 mt-4" src="/logo.png" alt="" />}
+      <NavLink className="flex flex-col justify-end items-end gap-8 mt-15">
         {navItems.map(({ name, link }) => (
           <Link
             to={link}

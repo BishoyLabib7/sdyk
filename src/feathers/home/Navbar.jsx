@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router";
 import Sidebar from "../../components/Sidebar";
 import { FaXmark } from "react-icons/fa6";
 
-export default function Navbar() {
+export default function Navbar({ type = "" }) {
   const [navbar, setNavbar] = React.useState(false);
   const [minbar, setMinbar] = React.useState(false);
   window.addEventListener("scroll", () => {
@@ -19,10 +19,15 @@ export default function Navbar() {
 
   return (
     <>
-      {minbar && <Sidebar close={() => setMinbar((minbar) => !minbar)} />}
+      {minbar && (
+        <Sidebar
+          type={type === "home" && !navbar}
+          close={() => setMinbar((minbar) => !minbar)}
+        />
+      )}
       <div
         className={` lg:text-amber-50 body-font px-5 ${
-          navbar
+          navbar || type !== "home"
             ? "bg-[#ffede8] !text-[#222222] fixed w-full top-0 left-0 z-100 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
             : "bg-transparent"
         } transition-all duration-300`}
@@ -39,14 +44,18 @@ export default function Navbar() {
               {minbar ? (
                 <FaXmark
                   className={`size-10 lg:hidden block ${
-                    navbar ? "text-[#222222]" : " text-[#ffede8]"
+                    navbar || type !== "home"
+                      ? "text-[#222222]"
+                      : " text-[#ffede8]"
                   }`}
                   onClick={() => setMinbar((minbar) => !minbar)}
                 />
               ) : (
                 <FiMenu
                   className={`size-10 lg:hidden block ${
-                    navbar ? "text-[#222222]" : " text-[#ffede8]"
+                    navbar || type !== "home"
+                      ? "text-[#222222]"
+                      : " text-[#ffede8]"
                   }`}
                   onClick={() => setMinbar((minbar) => !minbar)}
                 />
@@ -56,13 +65,15 @@ export default function Navbar() {
 
           <NavLink
             className={`lg:ml-auto  lg:mr-4 lg:py-1 lg:pr-4 lg:border-r lg:border-gray-400	 lg:flex-row-reverse flex-col items-center text-xl justify-between cursor-pointer gap-10 lg:flex hidden ${
-              navbar ? "text-[#222222]" : " text-[#ffede8]"
+              navbar || type !== "home" ? "text-[#222222]" : " text-[#ffede8]"
             }  transition-all duration-300`}
           >
             <Link
               to="/"
               className={`mr-5 ${
-                navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
+                navbar || type !== "home"
+                  ? "hover:text-[#5BBB7B]"
+                  : "hover:text-[#F9FCAA]"
               }`}
             >
               الرئيسيه
@@ -70,7 +81,9 @@ export default function Navbar() {
             <Link
               to="/shop"
               className={`mr-5 ${
-                navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
+                navbar || type !== "home"
+                  ? "hover:text-[#5BBB7B]"
+                  : "hover:text-[#F9FCAA]"
               }`}
             >
               المتجر
@@ -78,7 +91,9 @@ export default function Navbar() {
             <Link
               to="/ads"
               className={`mr-5 ${
-                navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
+                navbar || type !== "home"
+                  ? "hover:text-[#5BBB7B]"
+                  : "hover:text-[#F9FCAA]"
               }`}
             >
               بطاقات الخصم{" "}
@@ -86,7 +101,9 @@ export default function Navbar() {
             <Link
               to="/news"
               className={`mr-5 ${
-                navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
+                navbar || type !== "home"
+                  ? "hover:text-[#5BBB7B]"
+                  : "hover:text-[#F9FCAA]"
               }`}
             >
               الاخبار
@@ -94,7 +111,9 @@ export default function Navbar() {
             <Link
               to="/services"
               className={`mr-5 ${
-                navbar ? "hover:text-[#5BBB7B]" : "hover:text-[#F9FCAA]"
+                navbar || type !== "home"
+                  ? "hover:text-[#5BBB7B]"
+                  : "hover:text-[#F9FCAA]"
               }`}
             >
               الخبرات
@@ -106,7 +125,11 @@ export default function Navbar() {
               <Button text="انضمام" />
             </Link>
             <Link to="/login">
-              <Button text="تسجيل دخول" type="secounder" reverse={navbar} />
+              <Button
+                text="تسجيل دخول"
+                type="secounder"
+                reverse={navbar || type !== "home"}
+              />
             </Link>
           </div>
         </div>
