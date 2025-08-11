@@ -5,12 +5,12 @@ import { TbUserScreen } from "react-icons/tb";
 
 export default function Services() {
   return (
-    <div className="mt-40 p-8 flex flex-col items-end  mx-auto ">
-      <div className="lg:w-[60%] w-full lg:h-[60vh] bg-[#525D53] rounded-4xl text-right text-white p-8 flex flex-col justify-center lg:items-end items-center gap-3 relative">
-        <h2 className="lg:text-5xl text-3xl font-bold mb-4 text-shadow-black  z-50">
+    <div className="mt-20 p-8 flex flex-col items-end  mx-auto">
+      <div className="lg:w-[50%] w-full lg:h-[60vh] bg-[#525D53] rounded-4xl text-right text-white p-8 flex flex-col justify-center lg:items-end items-center gap-3 relative">
+        <h2 className=" text-3xl font-bold my-4 text-shadow-black  z-50">
           هل تحتاج إلى القيام بشيء ما؟
         </h2>
-        <p className="lg:text-2xl text-xl z-50 text-shadow-black">
+        <p className="text-xl z-50 text-shadow-black">
           الخدمات الأكثر مشاهدة والأكثر مبيعًا على الإطلاق
         </p>
         <div className="flex gap-4 mt-8 z-50 lg:flex-row flex-col">

@@ -45,7 +45,7 @@ export default function Advertisement() {
   };
 
   return (
-    <div className="w-full bg-themepurple py-10">
+    <div className="w-full bg-themepurple py-8">
       <Slider className="w-full" {...settings}>
         <Link to="/advertisement">
           <img

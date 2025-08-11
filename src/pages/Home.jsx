@@ -8,6 +8,7 @@ import MostFamous from "../feathers/home/MostFamous";
 import Advertisement from "../feathers/home/Advertisement";
 import News from "../feathers/home/News";
 import Footer from "../components/Footer";
+import Bannar from "../feathers/home/Bannar";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <MostFamous />
         <Advertisement />
         <News />
+        <Bannar />
       </main>
     </>
   );

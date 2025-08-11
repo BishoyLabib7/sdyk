@@ -78,7 +78,7 @@ export default function SimpleSlider() {
     ],
   };
   return (
-    <div className="flex flex-col items-center justify-between my-10 gap-10">
+    <div className="flex flex-col items-center justify-between my-5 gap-10">
       <div className=" w-[80%] text-right p-8">
         <h2 className="text-2xl font-bold text-gray-800">
           اشهر الخبرات التي تم تقدمها

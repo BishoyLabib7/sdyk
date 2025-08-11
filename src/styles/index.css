@@ -2,6 +2,7 @@
 
 body {
   background-color: #ffede8;
+  position: relative !important;
 }
 .backgroud-clip {
   background-color: #3e4b40;
@@ -9,4 +10,12 @@ body {
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.backgroud-clip-header {
+  background-color: #3e4b40;
+  background-size: cover;
+  background-position: top;
+
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 71%); */
 }

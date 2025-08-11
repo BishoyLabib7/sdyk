@@ -52,7 +52,7 @@ const Category = [
 
 export default function Categories() {
   return (
-    <div className="flex flex-col items-center justify-between  my-10">
+    <div className="flex flex-col items-center justify-between my-5">
       <div className=" w-[80%] flex flex-row-reverse items-center justify-between p-8">
         <h2 className="text-2xl font-bold text-gray-800">
           تصفح المواهب حسب الفئة
