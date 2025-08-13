@@ -10,9 +10,12 @@ import Bannar from "../feathers/home/Bannar";
 export default function Home() {
   return (
     <>
-      <header className="bg-[url(/background-hero.png)] bg-no-repeat bg-cover md:h-screen h-[120%] md:mx-8 md:mt-8">
-        <Hero />
-      </header>
+      <div className="h-screen">
+        <div className="bg-[url(/background-hero.png)] bg-no-repeat bg-cover lg:h-auto h-[100%] md:mx-8 md:mt-8">
+          <Hero />
+        </div>
+      </div>
+
       <main>
         <Categories />
         <Offers />

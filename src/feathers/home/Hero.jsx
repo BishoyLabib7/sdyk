@@ -8,7 +8,7 @@ export default function Hero() {
     <>
       <Navbar type="home" />
       <div className="text-amber-50 px-7 rounded-b-4xl md:mx-8">
-        <div className="mx-auto flex px-5 py-15 md:flex-row flex-col  items-center">
+        <div className="mx-auto flex px-5 py-15 lg:flex-row flex-col  items-center">
           <div className=" lg:max-w-lg lg:w-full md:w-1/3 w-3/6 mb-10 md:mb-0">
             <img className="w-[80%]" alt="hero" src="/hero.png" />
           </div>
