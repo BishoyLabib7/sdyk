@@ -6,7 +6,7 @@ import Hero from "../feathers/home/Hero";
 
 export default function AppLayout() {
   return (
-    <div className="w-full h-screen relative">
+    <div>
       <Outlet />
       <footer className="lg:p-3">
         <Footer />

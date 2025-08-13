@@ -12,12 +12,12 @@ export default function Button({
       className={`${
         type === "primary"
           ? "text-[#3A473C] bg-[#F9FCAA] hover:bg-[#5BBB7B] hover:text-[#fff]"
-          : `border ${
+          : `border-2 ${
               reverse
-                ? "border-amber-900 text-[#222222]"
-                : "border-amber-50 text-[#fff]"
-            }bg-none `
-      }  font-bold py-2 px-8 rounded-full  transition duration-300 cursor-pointer ${style}`}
+                ? " border-black text-green-800"
+                : "border-green-50 text-[#fff] "
+            } bg-none`
+      }  font-bold md:py-2 py-1 md:px-8 px-5 rounded-full  transition duration-300 cursor-pointer ${style}`}
       onClick={onClick}
     >
       {text}

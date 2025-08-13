@@ -14,7 +14,7 @@ export default function ExpertCard({
   appointment,
 }) {
   return (
-    <div className="flex md:flex-row-reverse flex-col justify-center items-center w-full bg-white p-5 rounded-2xl gap-5 m-5">
+    <div className="flex md:flex-row-reverse flex-col justify-center items-center w-full bg-white p-5 rounded-2xl gap-5 my-5">
       <div className="lg:w-[60%] md:border-l-2 border-l-green-200 flex flex-col">
         <div className="flex flex-row-reverse gap-8">
           <img className="md:w-30 w-20 rounded-full" src={img} alt="" />
@@ -64,7 +64,7 @@ export default function ExpertCard({
               <Button
                 text="ارسال رسالة"
                 type="sec"
-                style="border-green-700 md:text-[1rem] text-sm"
+                style="text-green-800 border-green-700 md:text-[1rem] text-sm"
               />
             </Link>
           </div>

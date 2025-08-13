@@ -5,6 +5,14 @@ import { Link, NavLink } from "react-router";
 import Sidebar from "../../components/Sidebar";
 import { FaXmark } from "react-icons/fa6";
 
+const navItems = [
+  { name: "الرئيسيه", link: "/" },
+  { name: "المتجر", link: "shop" },
+  { name: " بطاقات الخصم", link: "ads" },
+  { name: "الاخبار", link: "news" },
+  { name: "الخبرات", link: "services" },
+];
+
 export default function Navbar({ type = "" }) {
   const [navbar, setNavbar] = React.useState(false);
   const [minbar, setMinbar] = React.useState(false);
@@ -25,16 +33,17 @@ export default function Navbar({ type = "" }) {
           close={() => setMinbar((minbar) => !minbar)}
         />
       )}
+
       <div
         className={` lg:text-amber-50 body-font px-5 ${
           navbar || type !== "home"
-            ? "bg-[#ffede8] !text-[#222222] fixed w-full top-0 left-0 z-100 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
+            ? "bg-[#ffede8] !text-[#c9c8c8] fixed w-full top-0 left-0 z-100 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
             : "bg-transparent"
         } transition-all duration-300`}
       >
         <div className="container mx-auto flex  flex-wrap p-1 flex-col lg:flex-row-reverse lg:items-center">
           <div className="flex flex-row-reverse items-center lg:justify-center justify-between">
-            <img className="size-18" src="/logo.png" alt="" />
+            <img className="md:size-18 size-12" src="/logo.png" alt="" />
 
             <div className="flex flex-row-reverse items-center gap-4">
               <Link to="/signup">
@@ -43,7 +52,7 @@ export default function Navbar({ type = "" }) {
               </Link>
               {minbar ? (
                 <FaXmark
-                  className={`size-10 lg:hidden block ${
+                  className={`size-8 lg:hidden block ${
                     navbar || type !== "home"
                       ? "text-[#222222]"
                       : " text-[#ffede8]"
@@ -52,7 +61,7 @@ export default function Navbar({ type = "" }) {
                 />
               ) : (
                 <FiMenu
-                  className={`size-10 lg:hidden block ${
+                  className={`size-8 lg:hidden block ${
                     navbar || type !== "home"
                       ? "text-[#222222]"
                       : " text-[#ffede8]"
@@ -68,56 +77,14 @@ export default function Navbar({ type = "" }) {
               navbar || type !== "home" ? "text-[#222222]" : " text-[#ffede8]"
             }  transition-all duration-300`}
           >
-            <Link
-              to="/"
-              className={`mr-5 ${
-                navbar || type !== "home"
-                  ? "hover:text-[#5BBB7B]"
-                  : "hover:text-[#F9FCAA]"
-              }`}
-            >
-              الرئيسيه
-            </Link>
-            <Link
-              to="/shop"
-              className={`mr-5 ${
-                navbar || type !== "home"
-                  ? "hover:text-[#5BBB7B]"
-                  : "hover:text-[#F9FCAA]"
-              }`}
-            >
-              المتجر
-            </Link>
-            <Link
-              to="/ads"
-              className={`mr-5 ${
-                navbar || type !== "home"
-                  ? "hover:text-[#5BBB7B]"
-                  : "hover:text-[#F9FCAA]"
-              }`}
-            >
-              بطاقات الخصم{" "}
-            </Link>
-            <Link
-              to="/news"
-              className={`mr-5 ${
-                navbar || type !== "home"
-                  ? "hover:text-[#5BBB7B]"
-                  : "hover:text-[#F9FCAA]"
-              }`}
-            >
-              الاخبار
-            </Link>
-            <Link
-              to="/services"
-              className={`mr-5 ${
-                navbar || type !== "home"
-                  ? "hover:text-[#5BBB7B]"
-                  : "hover:text-[#F9FCAA]"
-              }`}
-            >
-              الخبرات
-            </Link>
+            {navItems.map((link) => (
+              <Link
+                to={link.link}
+                className={`font-semibold cursor-pointer px-3 py-1  hover:text-green-100 hover:bg-green-500 transition-all duration-300 rounded-lg  hover:scale-110 active`}
+              >
+                {link.name}
+              </Link>
+            ))}
           </NavLink>
 
           <div className="lg:flex flex-row-reverse justify-between items-center gap-4 hidden">

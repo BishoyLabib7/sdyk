@@ -212,30 +212,27 @@ export default function Experiences() {
   return (
     <>
       <Navbar />
-      <div className="">
-        <ActiveExperts />
+      <ActiveExperts />
+      <div className="lg:w-[90%] w-full flex lg:flex-row-reverse flex-col justify-center gap-10 lg:mx-10">
+        <div className="lg:w-[30%] lg:h-screen lg:bg-white rounded-xl lg:p-3 lg:row-span-2">
+          <Filtration open={openFilter} setOpen={setOpenFilter} />
+        </div>
 
-        <div className="lg:w-[90%] w-full flex lg:flex-row-reverse flex-col justify-center gap-10 lg:mx-10">
-          <div className="lg:w-[30%] lg:h-screen lg:bg-white rounded-xl lg:p-3 lg:row-span-2">
-            <Filtration open={openFilter} setOpen={setOpenFilter} />
-          </div>
+        <div className="w-full flex flex-col">
+          <Categories handleOpen={setOpenFilter} />
 
-          <div className="w-full flex flex-col">
-            <Categories handleOpen={setOpenFilter} />
-
-            <div className="mt-5">
-              {experts.map((expert) => (
-                <ExpertCard
-                  img={expert.img}
-                  name={expert.name}
-                  jop={expert.jop}
-                  stars={expert.stars}
-                  experiences={expert.experiences}
-                  price={experts.price}
-                  appointment={expert.appointment}
-                />
-              ))}
-            </div>
+          <div className="mt-5 px-5">
+            {experts.map((expert) => (
+              <ExpertCard
+                img={expert.img}
+                name={expert.name}
+                jop={expert.jop}
+                stars={expert.stars}
+                experiences={expert.experiences}
+                price={experts.price}
+                appointment={expert.appointment}
+              />
+            ))}
           </div>
         </div>
       </div>
