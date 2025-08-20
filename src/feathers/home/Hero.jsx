@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../components/Button";
 import { Link } from "react-router";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/HomeNavbar";
 
 export default function Hero() {
   return (

@@ -1,5 +1,18 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: all;
+}
+
+[data-theme="forest"] {
+  .my-btn {
+    background-color: #ffede8;
+    border-color: #3e4b40;
+  }
+  .my-btn:hover {
+    background-color: #f9fcaa;
+    border-color: #5bbb7b;
+  }
+}
 
 html {
   background-color: #ffede8;
