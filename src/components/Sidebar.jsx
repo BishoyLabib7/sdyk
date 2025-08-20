@@ -2,10 +2,10 @@ import { Link, NavLink } from "react-router";
 function Sidebar({ close, type }) {
   const navItems = [
     { name: "الرئيسيه", link: "/" },
-    { name: "المتجر", link: "shop" },
-    { name: " بطاقات الخصم", link: "ads" },
-    { name: "الاخبار", link: "news" },
-    { name: "الخبرات", link: "services" },
+    { name: "المتجر", link: "/shop" },
+    { name: " بطاقات الخصم", link: "/ads" },
+    { name: "الاخبار", link: "/news" },
+    { name: "الخبرات", link: "/services" },
   ];
   return (
     <div

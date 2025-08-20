@@ -1,16 +1,16 @@
 import React from "react";
-import Button from "../../components/Button";
+import Button from "./Button";
 import { FiMenu } from "react-icons/fi";
 import { Link, NavLink } from "react-router";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "./Sidebar";
 import { FaXmark } from "react-icons/fa6";
 
 const navItems = [
   { name: "الرئيسيه", link: "/" },
-  { name: "المتجر", link: "shop" },
-  { name: " بطاقات الخصم", link: "ads" },
-  { name: "الاخبار", link: "news" },
-  { name: "الخبرات", link: "services" },
+  { name: "المتجر", link: "/shop" },
+  { name: " بطاقات الخصم", link: "/ads" },
+  { name: "الاخبار", link: "/news" },
+  { name: "الخبرات", link: "/services" },
 ];
 
 export default function Navbar({ type = "" }) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../feathers/home/Navbar";
+import Navbar from "../components/Navbar";
 import ActiveExperts from "../feathers/experiences/ActiveExperts";
 import Filtration from "../feathers/experiences/Filtration";
 import Categories from "../feathers/experiences/Categories";
