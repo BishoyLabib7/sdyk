@@ -1,28 +1,51 @@
 import { axiosInstance } from "./axios";
-import axios from "axios";
-const BASE_URL = "  http://localhost:8000/api";
+import Cookies from "js-cookie";
 
 export const signup = async (signupData) => {
-  const response = await axios.post(`${BASE_URL}/auth/signup`, signupData);
-  return response.data;
+  try {
+    const response = await axiosInstance.post("/auth/signup", signupData);
+    const { token } = response.data;
+    Cookies.set("authToken", token, {
+      expires: 7,
+      secure: true,
+      sameSite: "Strict",
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
 };
 
 export const login = async (loginData) => {
-  const response = await axios.post(`${BASE_URL}/auth/login`, loginData);
-  return response.data;
+  try {
+    const response = await axiosInstance.post("/auth/login", loginData);
+    const { token } = response.data;
+    Cookies.set("authToken", token, {
+      expires: 7,
+      secure: true,
+      sameSite: "Strict",
+    });
+    return response.data;
+
+    // Navigate to another page or update state
+  } catch (error) {
+    return error;
+  }
 };
 export const logout = async () => {
-  const response = await axios.post(`${BASE_URL}/auth/logout`);
+  const response = await axiosInstance.post("/auth/logout");
+  Cookies.remove("authToken");
   return response.data;
 };
 
 export const getAuthUser = async () => {
   try {
-    const res = await axiosInstance.get("/auth/me");
-    return res.data;
+    // Axios will automatically send the cookie with this request
+    const response = await axiosInstance.get("/auth/me");
+    return response.data;
   } catch (error) {
     console.log("Error in getAuthUser:", error);
-    return null;
+    return error;
   }
 };
 

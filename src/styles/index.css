@@ -3,15 +3,11 @@
   themes: all;
 }
 
-[data-theme="forest"] {
-  .my-btn {
-    background-color: #ffede8;
-    border-color: #3e4b40;
-  }
-  .my-btn:hover {
-    background-color: #f9fcaa;
-    border-color: #5bbb7b;
-  }
+@theme {
+  --color-sadykBg: #ffede8;
+  --color-primaryBg: #3e4b40;
+  --color-secondarBg: #f9fcaa;
+  --color-thirdBg: #5bbb7b;
 }
 
 html {

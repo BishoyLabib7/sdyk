@@ -163,6 +163,7 @@ export const THEMES = [
 ];
 
 export const LANGUAGES = [
+  "العربية",
   "English",
   "Spanish",
   "French",
@@ -177,6 +178,19 @@ export const LANGUAGES = [
   "Italian",
   "Turkish",
   "Dutch",
+];
+
+export const Specializations = [
+  "الصحة واللياقة البدنية",
+  "التغذية",
+  "المالية والاستثمار",
+  "التسويق الرقمي",
+  "التكنولوجيا والبرمجة",
+  "التطوير المهني والوظيفي",
+  "التعليم",
+  "العلاقات الأسرية والزوجية",
+  "التصميم الجرافيكي",
+  "الدعم النفسي والعلاجي",
 ];
 
 export const LANGUAGE_TO_FLAG = {

@@ -4,6 +4,8 @@ import { FiMenu } from "react-icons/fi";
 import { Link, NavLink } from "react-router";
 import Sidebar from "./MobileSidebar";
 import { FaXmark } from "react-icons/fa6";
+import useAuthUser from "../hooks/useAuthUser";
+import useLogout from "../hooks/useLogout";
 
 const navItems = [
   { name: "الرئيسيه", link: "/" },
@@ -14,6 +16,7 @@ const navItems = [
 ];
 
 export default function Navbar({ type = "" }) {
+  const { logoutMutation } = useLogout();
   const [navbar, setNavbar] = React.useState(false);
   const [minbar, setMinbar] = React.useState(false);
   window.addEventListener("scroll", () => {
@@ -24,6 +27,8 @@ export default function Navbar({ type = "" }) {
       setNavbar(false);
     }
   });
+  const { authUser } = useAuthUser();
+  const isAuthenticated = Boolean(authUser);
 
   return (
     <>
@@ -46,9 +51,13 @@ export default function Navbar({ type = "" }) {
             <img className="md:size-18 size-12" src="/logo.png" alt="" />
 
             <div className="flex flex-row-reverse items-center gap-4">
-              <Link to="/signup">
-                {" "}
-                <Button text="انضمام" style="lg:hidden block" />
+              <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>
+                <Button
+                  text={`${
+                    isAuthenticated ? `${authUser.fullName}..مرحبا` : "انضمام"
+                  }`}
+                  style="lg:hidden block"
+                />
               </Link>
               {minbar ? (
                 <FaXmark
@@ -88,15 +97,25 @@ export default function Navbar({ type = "" }) {
           </NavLink>
 
           <div className="lg:flex flex-row-reverse justify-between items-center gap-4 hidden">
-            <Link to="/signup">
-              <Button text="انضمام" />
-            </Link>
-            <Link to="/login">
+            <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>
               <Button
-                text="تسجيل دخول"
+                text={`${
+                  isAuthenticated ? `${authUser.fullName}..مرحبا` : "انضمام"
+                }`}
+              />
+            </Link>
+            <Link to={`${isAuthenticated ? "/" : "./login"}`}>
+              <Button
                 type="secounder"
                 reverse={navbar || type !== "home"}
-              />
+                onClick={isAuthenticated && logoutMutation}
+              >
+                {isAuthenticated ? (
+                  <span>&#8592; تسجيل الخروج </span>
+                ) : (
+                  "تسجيل دخول"
+                )}
+              </Button>
             </Link>
           </div>
         </div>

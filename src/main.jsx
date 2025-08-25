@@ -6,7 +6,13 @@ import "./styles/index.css";
 import App from "./App.jsx";
 
 // Create a client
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

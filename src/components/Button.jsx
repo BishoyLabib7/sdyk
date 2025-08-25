@@ -1,17 +1,18 @@
 import React from "react";
 
 export default function Button({
-  text = "Button",
+  text = "",
   onClick,
   type = "primary",
   style = "",
   reverse = false,
+  children,
 }) {
   return (
     <button
       className={`${
         type === "primary"
-          ? "text-[#3A473C] bg-[#F9FCAA] hover:bg-[#5BBB7B] hover:text-[#fff]"
+          ? "text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]"
           : `border-2 ${
               reverse
                 ? " border-black text-green-800"
@@ -21,6 +22,7 @@ export default function Button({
       onClick={onClick}
     >
       {text}
+      {children}
     </button>
   );
 }

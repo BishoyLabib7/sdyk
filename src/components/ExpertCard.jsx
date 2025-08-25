@@ -12,6 +12,7 @@ export default function ExpertCard({
   experiences,
   price,
   appointment,
+  id,
 }) {
   return (
     <div className="flex md:flex-row-reverse flex-col justify-center items-center w-full bg-white p-5 rounded-2xl gap-5 my-5">
@@ -60,7 +61,7 @@ export default function ExpertCard({
               style=" md:text-[1rem]  text-sm"
               type="primary"
             />
-            <Link to="/chat">
+            <Link to={`/chat/${id}`}>
               <Button
                 text="ارسال رسالة"
                 type="sec"

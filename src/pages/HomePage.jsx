@@ -7,7 +7,12 @@ import {
   sendFriendRequest,
 } from "../lib/api";
 import { Link } from "react-router";
-import { CheckCircleIcon, MapPinIcon, UserPlusIcon, UsersIcon } from "lucide-react";
+import {
+  CheckCircleIcon,
+  MapPinIcon,
+  UserPlusIcon,
+  UsersIcon,
+} from "lucide-react";
 
 import { capitialize } from "../lib/utils";
 
@@ -35,7 +40,8 @@ const HomePage = () => {
 
   const { mutate: sendRequestMutation, isPending } = useMutation({
     mutationFn: sendFriendRequest,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["outgoingFriendReqs"] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ["outgoingFriendReqs"] }),
   });
 
   useEffect(() => {
@@ -48,11 +54,18 @@ const HomePage = () => {
     }
   }, [outgoingFriendReqs]);
 
+  console.log(recommendedUsers.length === undefined ? "yes" : "no");
+
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
+    <div
+      className="p-4 sm:p-6 lg:p-8 bg-[#1d232a] text-white"
+      data-theme="forest"
+    >
       <div className="container mx-auto space-y-10">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Your Friends</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            Your Friends
+          </h2>
           <Link to="/notifications" className="btn btn-outline btn-sm">
             <UsersIcon className="mr-2 size-4" />
             Friend Requests
@@ -63,11 +76,11 @@ const HomePage = () => {
           <div className="flex justify-center py-12">
             <span className="loading loading-spinner loading-lg" />
           </div>
-        ) : friends.length === 0 ? (
+        ) : friends.length === 0 || friends.length === undefined ? (
           <NoFriendsFound />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {friends.map((friend) => (
+            {friends?.map((friend) => (
               <FriendCard key={friend._id} friend={friend} />
             ))}
           </div>
@@ -77,9 +90,12 @@ const HomePage = () => {
           <div className="mb-6 sm:mb-8">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Meet New Learners</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                  Meet New Learners
+                </h2>
                 <p className="opacity-70">
-                  Discover perfect language exchange partners based on your profile
+                  Discover perfect language exchange partners based on your
+                  profile
                 </p>
               </div>
             </div>
@@ -89,9 +105,12 @@ const HomePage = () => {
             <div className="flex justify-center py-12">
               <span className="loading loading-spinner loading-lg" />
             </div>
-          ) : recommendedUsers.length === 0 ? (
+          ) : recommendedUsers.length === 0 ||
+            recommendedUsers.length === undefined ? (
             <div className="card bg-base-200 p-6 text-center">
-              <h3 className="font-semibold text-lg mb-2">No recommendations available</h3>
+              <h3 className="font-semibold text-lg mb-2">
+                No recommendations available
+              </h3>
               <p className="text-base-content opacity-70">
                 Check back later for new language partners!
               </p>
@@ -113,7 +132,9 @@ const HomePage = () => {
                         </div>
 
                         <div>
-                          <h3 className="font-semibold text-lg">{user.fullName}</h3>
+                          <h3 className="font-semibold text-lg">
+                            {user.fullName}
+                          </h3>
                           {user.location && (
                             <div className="flex items-center text-xs opacity-70 mt-1">
                               <MapPinIcon className="size-3 mr-1" />
@@ -135,7 +156,9 @@ const HomePage = () => {
                         </span>
                       </div>
 
-                      {user.bio && <p className="text-sm opacity-70">{user.bio}</p>}
+                      {user.bio && (
+                        <p className="text-sm opacity-70">{user.bio}</p>
+                      )}
 
                       {/* Action button */}
                       <button

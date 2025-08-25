@@ -13,11 +13,12 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     loginMutation(loginData);
+    console.log(error);
   };
 
   return (
     <div
-      className="h-screen flex items-center justify-center p-4 sm:p-6 md:p-8"
+      className="h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 bg-sadykBg"
       data-theme="forest"
     >
       <div className="border border-primary/25 flex flex-col lg:flex-row-reverse w-full max-w-5xl mx-auto bg-base-100 rounded-xl shadow-lg overflow-hidden">
@@ -31,7 +32,7 @@ const LoginPage = () => {
           {/* ERROR MESSAGE DISPLAY */}
           {error && (
             <div className="alert alert-error mb-4">
-              <span>{error.response?.data.message}</span>
+              <span>{error.message}</span>
             </div>
           )}
 
@@ -89,7 +90,7 @@ const LoginPage = () => {
                         جاري تسجيل الدخول...
                       </>
                     ) : (
-                      "Sign In"
+                      "تسجيل الدخول"
                     )}
                   </button>
 

@@ -19,27 +19,9 @@ import Layout from "./components/Layout.jsx";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
 
-// const addUser = async function () {
-//   const data = {
-//     email: "bisgoy@gmail.com",
-//     fullName: "bishoy",
-//     password: "sfg321465",
-//   };
-
-//   try {
-//     const response = await axios.post(
-//       "http://localhost:8000/api/auth/signup",
-//       data
-//     );
-//     return response.data;
-//   } catch (error) {
-//     return error.response.data.message;
-//   }
-// };
-
 function App() {
-  // console.log(addUser());
   const { isLoading, authUser } = useAuthUser();
+
   const isAuthenticated = Boolean(authUser);
   const isOnboarded = authUser?.isOnboarded;
   if (isLoading) return <PageLoader />;
@@ -65,6 +47,7 @@ function App() {
               )
             }
           />
+
           <Route
             path="/signup"
             element={

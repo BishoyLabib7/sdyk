@@ -224,6 +224,8 @@ export default function Experiences() {
           <div className="mt-5 px-5">
             {experts.map((expert) => (
               <ExpertCard
+                key={expert.id}
+                id={expert.id}
                 img={expert.img}
                 name={expert.name}
                 jop={expert.jop}
