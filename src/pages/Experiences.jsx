@@ -211,7 +211,6 @@ export default function Experiences() {
   const [openFilter, setOpenFilter] = useState(false);
   return (
     <>
-      <Navbar />
       <ActiveExperts />
       <div className="lg:w-[90%] w-full flex lg:flex-row-reverse flex-col justify-center gap-10 lg:mx-10">
         <div className="lg:w-[30%] lg:h-screen lg:bg-white rounded-xl lg:p-3 lg:row-span-2">

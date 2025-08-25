@@ -1,10 +1,11 @@
 import { lazy } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router";
-import NotFound from "./pages/NotFound.jsx";
-import AppLayout from "./components/AppLayout.jsx";
-import Experiences from "./pages/Experiences.jsx";
 import { Toaster } from "react-hot-toast";
 
+const Home = lazy(() => import("./pages/Home.jsx"));
+import AppLayout from "./components/AppLayout.jsx";
+import Experiences from "./pages/Experiences.jsx";
+import ShopPage from "./pages/ShopPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -12,12 +13,11 @@ import NotificationsPage from "./pages/NotificationsPage.jsx";
 import CallPage from "./pages/CallPage.jsx";
 import ChatPage from "./pages/ChatPage.jsx";
 import OnboardingPage from "./pages/OnboardingPage.jsx";
-
 import PageLoader from "./components/PageLoader.jsx";
 import useAuthUser from "./hooks/useAuthUser.js";
 import Layout from "./components/Layout.jsx";
-
-const Home = lazy(() => import("./pages/Home.jsx"));
+import NotFound from "./pages/NotFound.jsx";
+import Product from "./feathers/shop/Product.jsx";
 
 function App() {
   const { isLoading, authUser } = useAuthUser();
@@ -30,11 +30,13 @@ function App() {
       <BrowserRouter>
         <Toaster />
         <Routes>
+          {" "}
+          <Route index element={<Home />} />
           <Route element={<AppLayout />}>
-            <Route index element={<Home />} />
-            <Route path="/services" element={<Experiences />} />
+            <Route path="/services" element={<Experiences />} />{" "}
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/shop/:id" element={<Product />} />
           </Route>
-
           <Route
             path="/"
             element={
@@ -47,7 +49,6 @@ function App() {
               )
             }
           />
-
           <Route
             path="/signup"
             element={
@@ -90,7 +91,6 @@ function App() {
               )
             }
           />
-
           <Route
             path="/chat/:id"
             element={
@@ -103,7 +103,6 @@ function App() {
               )
             }
           />
-
           <Route
             path="/onboarding"
             element={
@@ -118,7 +117,6 @@ function App() {
               )
             }
           />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -6,6 +6,7 @@ import MostFamous from "../feathers/home/MostFamous";
 import Advertisement from "../feathers/home/Advertisement";
 import News from "../feathers/home/News";
 import Bannar from "../feathers/home/Bannar";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -15,14 +16,16 @@ export default function Home() {
           <Hero />
         </div>
       </div>
-
       <Categories />
       <Offers />
       <Services />
       <MostFamous />
       <Advertisement />
       <News />
-      <Bannar />
+      <Bannar />{" "}
+      <footer className="lg:p-3">
+        <Footer />
+      </footer>
     </>
   );
 }
