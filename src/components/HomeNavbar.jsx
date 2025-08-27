@@ -48,7 +48,12 @@ export default function Navbar({ type = "" }) {
       >
         <div className="container mx-auto flex  flex-wrap p-1 flex-col lg:flex-row-reverse lg:items-center">
           <div className="flex flex-row-reverse items-center lg:justify-center justify-between">
-            <img className="md:size-18 size-12" src="/logo.png" alt="" />
+            <img
+              loading="lazy"
+              className="md:size-18 size-12"
+              src="/logo.webp"
+              alt=""
+            />
 
             <div className="flex flex-row-reverse items-center gap-4">
               <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>

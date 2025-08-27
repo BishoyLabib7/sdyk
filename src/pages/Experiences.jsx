@@ -8,7 +8,7 @@ import ExpertCard from "../components/ExpertCard";
 const experts = [
   {
     id: 1,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "أحمد سامي",
     job: "مهندس مدني",
     stars: 5,
@@ -18,7 +18,7 @@ const experts = [
   },
   {
     id: 2,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "منى شريف",
     job: "معلمة لغة عربية",
     stars: 5,
@@ -28,7 +28,7 @@ const experts = [
   },
   {
     id: 3,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "كريم فؤاد",
     job: "مصمم جرافيك",
     stars: 5,
@@ -38,7 +38,7 @@ const experts = [
   },
   {
     id: 4,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "ياسمين حسام",
     job: "ممرضة",
     stars: 5,
@@ -48,7 +48,7 @@ const experts = [
   },
   {
     id: 5,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "محمد طارق",
     job: "محاسب",
     stars: 5,
@@ -58,7 +58,7 @@ const experts = [
   },
   {
     id: 6,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "سارة مجدي",
     job: "مطورة مواقع",
     stars: 5,
@@ -68,7 +68,7 @@ const experts = [
   },
   {
     id: 7,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "عمرو خالد",
     job: "صحفي",
     stars: 5,
@@ -78,7 +78,7 @@ const experts = [
   },
   {
     id: 8,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "ندى أحمد",
     job: "أخصائية تسويق",
     stars: 5,
@@ -88,7 +88,7 @@ const experts = [
   },
   {
     id: 9,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "هاني عصام",
     job: "سائق خاص",
     stars: 5,
@@ -98,7 +98,7 @@ const experts = [
   },
   {
     id: 10,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "رحاب محمد",
     job: "موظفة استقبال",
     stars: 5,
@@ -108,7 +108,7 @@ const experts = [
   },
   {
     id: 11,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "سامح أيمن",
     job: "فني كهرباء",
     stars: 5,
@@ -118,7 +118,7 @@ const experts = [
   },
   {
     id: 12,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "فاطمة هاني",
     job: "أخصائية موارد بشرية",
     stars: 5,
@@ -128,7 +128,7 @@ const experts = [
   },
   {
     id: 13,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "إيهاب محمود",
     job: "مبرمج",
     stars: 5,
@@ -138,7 +138,7 @@ const experts = [
   },
   {
     id: 14,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "دعاء أسامة",
     job: "مديرة مشروع",
     stars: 5,
@@ -148,7 +148,7 @@ const experts = [
   },
   {
     id: 15,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "مصطفى حسن",
     job: "طبيب أسنان",
     stars: 5,
@@ -158,7 +158,7 @@ const experts = [
   },
   {
     id: 16,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "ريم أحمد",
     job: "مهندسة ديكور",
     stars: 5,
@@ -168,7 +168,7 @@ const experts = [
   },
   {
     id: 17,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "حسام عبد الله",
     job: "مدرس رياضيات",
     stars: 5,
@@ -178,7 +178,7 @@ const experts = [
   },
   {
     id: 18,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "مي خالد",
     job: "مترجمة",
     stars: 5,
@@ -188,7 +188,7 @@ const experts = [
   },
   {
     id: 19,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "تامر إبراهيم",
     job: "فني ميكانيكا",
     stars: 5,
@@ -198,7 +198,7 @@ const experts = [
   },
   {
     id: 20,
-    img: "/person.jpg",
+    img: "/person.webp",
     name: "شيماء علي",
     job: "صيدلانية",
     stars: 5,

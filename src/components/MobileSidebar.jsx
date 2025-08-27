@@ -13,7 +13,9 @@ function Sidebar({ close, type }) {
         type ? "py-1" : "py-11"
       } bg-[#ffede8] fixed h-full z-50 right-0 shadow-2xl shadow-[rgba(91, 187, 123, 0.15)]`}
     >
-      {type && <img className="size-18 mt-4" src="/logo.png" alt="" />}
+      {type && (
+        <img loading="lazy" className="size-18 mt-4" src="/logo.webp" alt="" />
+      )}
       <NavLink className="flex flex-col justify-end items-end gap-8 mt-15">
         {navItems.map(({ name, link }) => (
           <Link

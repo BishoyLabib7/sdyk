@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <div className="lg:h-auto h-screen">
-        <div className="bg-[url(/background-hero.png)] bg-no-repeat bg-cover lg:h-auto h-[100%] md:mx-8 md:mt-8">
+        <div className="bg-[url(/background-hero.webp)] bg-no-repeat bg-cover lg:h-auto h-[100%] md:mx-8 md:mt-8">
           <Hero />
         </div>
       </div>

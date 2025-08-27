@@ -6,21 +6,21 @@ const famous = [
   {
     title: "الدكتور احمد عبدالمنعم ",
     description: "اقدم خبرات في تصميم المواقع",
-    image: "/MostFamous/famous_1.png",
+    image: "/MostFamous/famous_1.webp",
     rating: 4.9,
   },
 
   {
     title: "المهندس زياد علي ",
     description: "اقدم خبرات في تصميم المواقع",
-    image: "/MostFamous/famous_3.png",
+    image: "/MostFamous/famous_3.webp",
     rating: 4.9,
   },
 
   {
     title: "الاستاذه علياء محمد",
     description: "اقدم خبرات في تصميم المواقع",
-    image: "/MostFamous/famous_2.png",
+    image: "/MostFamous/famous_2.webp",
     rating: 4.9,
   },
 ];

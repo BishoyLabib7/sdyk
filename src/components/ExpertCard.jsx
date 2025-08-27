@@ -5,7 +5,7 @@ import { GoStarFill } from "react-icons/go";
 import { Link } from "react-router";
 
 export default function ExpertCard({
-  img = "/person.jpg",
+  img = "/person.webp",
   name,
   jop,
   stars,
@@ -18,7 +18,12 @@ export default function ExpertCard({
     <div className="flex md:flex-row-reverse flex-col justify-center items-center w-full bg-white p-5 rounded-2xl gap-5 my-5">
       <div className="lg:w-[60%] md:border-l-2 border-l-green-200 flex flex-col">
         <div className="flex flex-row-reverse gap-8">
-          <img className="md:w-30 w-20 rounded-full" src={img} alt="" />
+          <img
+            loading="lazy"
+            className="md:w-30 w-20 rounded-full"
+            src={img}
+            alt=""
+          />
           <div className="flex flex-col text-right">
             <h3 className="font-bold text-xl mb-3">{name}</h3>
             <p className="mb-5">{jop}</p>

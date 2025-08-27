@@ -32,7 +32,7 @@ export default function Services() {
         </div>
         <img
           className=" absolute right-[80%] hidden lg:block"
-          src="/Services.png"
+          src="/Services.webp"
           alt=""
         />
       </div>

@@ -9,21 +9,21 @@ const prouducts = [
     name: "لوحة ألعاب HAVIT HV-G92",
     price: 960,
     oldPrice: 1160,
-    img: "/public/shop/p5.png",
+    img: "/shop/p5.png",
     rate: 4,
   },
   {
     id: 2,
     name: "لوحة مفاتيح سلكية AK-900",
     price: 200,
-    img: "/public/shop/p6.png",
+    img: "/shop/p6.png",
     rate: 2,
   },
   {
     id: 3,
     name: "مبرد وحدة المعالجة المركزية  ",
     price: 550,
-    img: "/public/shop/p7.png",
+    img: "/shop/p7.png",
     rate: 5,
   },
   {
@@ -31,7 +31,7 @@ const prouducts = [
     name: "كمبيوتر محمول للألعاب ",
     price: 960,
     oldPrice: 1160,
-    img: "/public/shop/p8.png",
+    img: "/shop/p8.png",
     rate: 3,
   },
 ];
@@ -76,15 +76,12 @@ const settings = {
 export default function Product() {
   return (
     <>
-      <div className="w-[80%] min-h-screen flex flex-col justify-center items-center mx-auto my-30">
+      <div className="md:w-[80%] min-h-screen flex flex-col justify-center items-center mx-auto my-30">
         <div
           dir="rtl"
           className="w-full flex lg:flex-row flex-col justify-content-center align-items-center gap-5 my-5 "
         >
-          <div
-            dir="rtl"
-            className="flex flex-col justify-content-center align-items-center gap-5 flex-1/3  px-10"
-          >
+          <div dir="rtl" className="flex flex-col gap-5 px-10">
             <h1 className="font-bold">وحدة تحكم الألعاب Havit HV G92</h1>
             <div className="flex gap-2">
               <Stars rate={4} />
@@ -168,28 +165,28 @@ export default function Product() {
           </div>
 
           <div className="rounded-lg p-5 flex-1/2 bg-white lg:flex justify-center items-center  hidden">
-            <img src="/public/shop/showP1.png" alt="" />
+            <img loading="lazy" src="/shop/showP1.png" alt="" />
           </div>
 
           <div className="p-5 flex-1/6 lg:flex flex-col gap-5 hidden ">
             <img
               className="size-30 cursor-pointer bg-white p-5 rounded-lg"
-              src="/public/shop/showP2.png"
+              src="/shop/showP2.png"
               alt=""
             />
             <img
               className="size-30 cursor-pointer bg-white p-5 rounded-lg"
-              src="/public/shop/showP3.png"
+              src="/shop/showP3.png"
               alt=""
             />
             <img
               className="size-30 cursor-pointer bg-white p-5 rounded-lg"
-              src="/public/shop/showP4.png"
+              src="/shop/showP4.png"
               alt=""
             />
             <img
               className="size-30 cursor-pointer bg-white p-5 rounded-lg"
-              src="/public/shop/showP5.png"
+              src="/shop/showP5.png"
               alt=""
             />
           </div>
@@ -200,28 +197,28 @@ export default function Product() {
             <div className="w-[90%] bg-white flex justify-center items-center p-10 rounded-3xl">
               <img
                 className="w-[80%] cursor-pointer p-5 rounded-lg"
-                src="/public/shop/showP2.png"
+                src="/shop/showP2.png"
                 alt=""
               />{" "}
             </div>{" "}
             <div className="w-[90%] bg-white flex justify-center items-center p-10 rounded-3xl">
               <img
                 className=" w-[80%] cursor-pointer p-5 rounded-lg"
-                src="/public/shop/showP3.png"
+                src="/shop/showP3.png"
                 alt=""
               />{" "}
             </div>{" "}
             <div className="w-[90%] bg-white flex justify-center items-center p-10 rounded-3xl">
               <img
                 className=" w-[80%] cursor-pointer p-5 rounded-lg"
-                src="/public/shop/showP4.png"
+                src="/shop/showP4.png"
                 alt=""
               />{" "}
             </div>{" "}
             <div className="w-[90%] bg-white flex justify-center items-center p-10 rounded-3xl">
               <img
                 className=" w-[80%] cursor-pointer p-5 rounded-lg"
-                src="/public/shop/showP5.png"
+                src="/shop/showP5.png"
                 alt=""
               />{" "}
             </div>

@@ -26,7 +26,12 @@ const LoginPage = () => {
         <div className="w-full lg:w-1/2 p-4 sm:p-8 flex flex-col">
           {/* LOGO */}
           <div className="mb-4 flex items-center justify-end gap-2">
-            <img className="size-20" src="logo.png" alt="صديق" />
+            <img
+              loading="lazy"
+              className="size-20"
+              src="/logo.webp"
+              alt="صديق"
+            />
           </div>
 
           {/* ERROR MESSAGE DISPLAY */}
@@ -117,7 +122,7 @@ const LoginPage = () => {
             {/* Illustration */}
             <div className="relative aspect-square max-w-sm mx-auto">
               <img
-                src="/i.png"
+                src="/i.webp"
                 alt="Language connection illustration"
                 className="w-full h-full"
               />

@@ -19,7 +19,7 @@ export default function Card({
     >
       <div className=" flex flex-col items-end justify-end p-4 gap-3 ">
         <div className="w-full flex justify-center items-center">
-          <img className="w-70 rounded-2xl" src={image} alt="" />
+          <img loading="lazy" className="w-70 rounded-2xl" src={image} alt="" />
         </div>
         <h3 className="text-sm font-semibold text-gray-400 ">{title}</h3>
         <p className="text-sm text-right">{description}</p>
@@ -31,7 +31,12 @@ export default function Card({
         </div>
         {name && (
           <div className="border-t border-gray-300 my-2 pt-3 flex  items-center gap-3 ">
-            <img className="size-5 rounded-full" src={userImage} alt="" />
+            <img
+              loading="lazy"
+              className="size-5 rounded-full"
+              src={userImage}
+              alt=""
+            />
             <p>{name}</p>
           </div>
         )}

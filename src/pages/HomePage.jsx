@@ -128,7 +128,11 @@ const HomePage = () => {
                     <div className="card-body p-5 space-y-4">
                       <div className="flex items-center gap-3">
                         <div className="avatar size-16 rounded-full">
-                          <img src={user.profilePic} alt={user.fullName} />
+                          <img
+                            loading="lazy"
+                            src={user.profilePic}
+                            alt={user.fullName}
+                          />
                         </div>
 
                         <div>
