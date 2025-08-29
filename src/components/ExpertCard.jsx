@@ -1,19 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 
 import { GoStarFill } from "react-icons/go";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
+import useSendRequest from "../hooks/useSendRequest";
+import useAuthUser from "../hooks/useAuthUser";
 
 export default function ExpertCard({
   img = "/person.webp",
   name,
-  jop,
-  stars,
-  experiences,
-  price,
-  appointment,
+  jop = "مهندس مدني",
+  stars = 4,
+  experiences = 3,
+  price = 450,
+  appointment = { time: "5 مساءا", day: "15 اغسطس" },
   id,
+  type = "/services",
 }) {
+  const { sendFriendRequest } = useSendRequest();
+  const navigate = useNavigate();
+  const { authUser } = useAuthUser();
+  const isAuthenticated = Boolean(authUser);
+  const isOnboarded = authUser?.isOnboarded;
+  const [onclickButton, setonclicButton] = useState(false);
+  function handleButton() {
+    if (type === "/services") {
+      // handleSendRequest();
+      setonclicButton(true);
+    } else {
+      handleChat();
+    }
+  }
+
+  function handleSendRequest() {
+    if (!isAuthenticated) {
+      navigate("/login");
+    } else if (isAuthenticated && !isOnboarded) {
+      navigate("/onboarding");
+    } else sendFriendRequest(id);
+  }
+
+  function handleChat() {
+    navigate(`/chat/${id}`);
+  }
+
   return (
     <div className="flex md:flex-row-reverse flex-col justify-center items-center w-full bg-white p-5 rounded-2xl gap-5 my-5">
       <div className="lg:w-[60%] md:border-l-2 border-l-green-200 flex flex-col">
@@ -43,13 +73,12 @@ export default function ExpertCard({
 
         <div>
           <h4 className="font-semibold text-right mt-5">اسعار</h4>
-          <div className="flex gap-10 justify-end">
-            <div>{price?.half} جنيه / 30 دقيقة</div>
-            <div>{price?.full} جنيه / 60 دقيقة</div>
+          <div className="px-5 flex gap-10 justify-end items-center mt-2 text-green-800 text-lg">
+            <div dir="rtl">{price} جنيه / 60 دقيقة</div>
           </div>
         </div>
       </div>
-      <div className="lg:w-[40%] ">
+      <div className="lg:w-[40%]">
         <h3 className="font-bold m-4 text-right">اقرب معاد</h3>
         <div className="flex flex-row-reverse justify-around gap-8">
           <div className="flex flex-col  border border-green-200 rounded-xl">
@@ -61,21 +90,39 @@ export default function ExpertCard({
           </div>
           <div className="flex flex-col gap-5">
             <Button
-              text="إحجز الموعد
-"
+              text={type === "/services" ? "من انا" : "إبدأ المحادثة"}
               style=" md:text-[1rem]  text-sm"
               type="primary"
             />
-            <Link to={`/chat/${id}`}>
-              <Button
-                text="ارسال رسالة"
-                type="sec"
-                style="text-green-800 border-green-700 md:text-[1rem] text-sm"
-              />
-            </Link>
+
+            <button
+              type="button"
+              onClick={() => handleButton()}
+              className={`border font-bold md:py-2 py-1 md:px-8 px-5 rounded-full  transition duration-300 text-green-800 border-green-700 md:text-[1rem] text-sm ${
+                onclickButton ? "cursor-not-allowed" : "cursor-pointer"
+              } text-center disabled:bg-gray-300`}
+              disabled={onclickButton}
+            >
+              {type === "/services"
+                ? onclickButton
+                  ? "تم ارسال طلب الصداقة"
+                  : "طلب صداقة"
+                : "ارسال رسالة"}
+            </button>
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function NoData() {
+  return (
+    <div>
+      <img src="/no data.jpg" alt="no requests" className="mx-auto w-1/2" />
+      <h3 className="text-center text-xl font-semibold text-primaryBg">
+        لا يوجد اصدقاء
+      </h3>
     </div>
   );
 }

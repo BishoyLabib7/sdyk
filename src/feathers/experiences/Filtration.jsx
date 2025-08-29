@@ -9,8 +9,6 @@ const types = [
 export default function Filtration({ open, setOpen }) {
   const [fee, setFee] = useState(0);
 
-  console.log(open);
-
   const handleClose = () => setOpen(false);
 
   return (
@@ -139,7 +137,4 @@ export default function Filtration({ open, setOpen }) {
       </div>
     </>
   );
-  // return (
-
-  // );
 }

@@ -54,8 +54,6 @@ const HomePage = () => {
     }
   }, [outgoingFriendReqs]);
 
-  console.log(recommendedUsers.length === undefined ? "yes" : "no");
-
   return (
     <div
       className="p-4 sm:p-6 lg:p-8 bg-[#1d232a] text-white"

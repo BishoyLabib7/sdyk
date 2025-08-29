@@ -6,6 +6,7 @@ function Sidebar({ close, type }) {
     { name: " بطاقات الخصم", link: "/ads" },
     { name: "الاخبار", link: "/news" },
     { name: "الخبرات", link: "/services" },
+    { name: "الاصدقاء", link: "/friends" },
   ];
   return (
     <div

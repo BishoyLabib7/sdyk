@@ -2,7 +2,7 @@ import PersonalCard from "../../components/PersonalCard";
 import SampleNextArrow from "../../components/Arrows";
 import Slider from "react-slick";
 
-const people = [
+const peopleActive = [
   { name: "أحمد سامي", job: "مهندس مدني" },
   { name: "منى شريف", job: "معلمة لغة عربية" },
   { name: "كريم فؤاد", job: "مصمم جرافيك" },
@@ -25,7 +25,7 @@ const people = [
   { name: "شيماء علي", job: "صيدلانية" },
 ];
 
-export default function ActiveExperts() {
+export default function ActiveExperts({ type = "experts", people }) {
   const settings = {
     infinite: true,
     speed: 500,
@@ -63,14 +63,16 @@ export default function ActiveExperts() {
     ],
   };
   return (
-    <div className="flex flex-col items-center justify-between gap-10 md:py-30 py-20 ">
+    <div className="flex flex-col items-center justify-between gap-10 mb-20">
       <div className=" w-[80%] text-right ">
         <h2 className="text-2xl md:py-5 font-bold text-gray-800">
-          : خبرائنا متاحين الآن
+          {type === "frients"
+            ? "          :الاصدقاء متاحين الآن"
+            : "          : خبرائنا متاحين الآن"}
         </h2>
       </div>
       <Slider className="w-[80%] mx-auto  " {...settings}>
-        {people.map((person) => (
+        {people?.map((person) => (
           <div>
             <PersonalCard name={person.name} jop={person.job} />
           </div>

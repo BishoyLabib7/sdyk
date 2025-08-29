@@ -15,7 +15,7 @@ const optionsData = [
   { value: "paid_newsletters", label: "النشرات البريدية المدفوعة" },
 ];
 
-export default function Categories({ handleOpen }) {
+export default function Categories({ handleOpen, type = "/service" }) {
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (e) => {
@@ -49,9 +49,9 @@ export default function Categories({ handleOpen }) {
         <div className="flex w-full gap-10">
           <button
             onClick={() => handleOpen((open) => !open)}
-            className="lg:hidden block w-full rounded-md text-white border border-gray-300 bg-[#5BBB7B] pl-10 pr-4 py-2 text-center shadow-sm transition-colors duration-300 placeholder-gray-400 focus:border-green-500 focus:outline-none"
+            className=" xl:hidden block w-full rounded-md text-white border border-gray-300 bg-[#5BBB7B] pl-10 pr-4 py-2 text-center shadow-sm transition-colors duration-300 placeholder-gray-400 focus:border-green-500 focus:outline-none"
           >
-            تصفية
+            {type === "/friends" ? "طلبات الصداقة" : "تصفية الخبراء"}
           </button>
           <input
             type="text"

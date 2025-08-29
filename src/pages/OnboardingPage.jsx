@@ -19,10 +19,13 @@ const OnboardingPage = () => {
   const [formState, setFormState] = useState({
     fullName: authUser?.fullName || "",
     bio: authUser?.bio || "",
-    nativeLanguage: authUser?.nativeLanguage || "",
-    learningLanguage: authUser?.learningLanguage || "",
+    nativeLanguage: authUser?.nativeLanguage || "english",
+    learningLanguage: "english",
     location: authUser?.location || "",
     profilePic: authUser?.profilePic || "",
+    price: 0,
+    yearsOfExperience: 0,
+    specialization: "",
   });
 
   const { mutate: onboardingMutation, isPending } = useMutation({
@@ -39,7 +42,6 @@ const OnboardingPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     onboardingMutation(formState);
   };
 
@@ -124,68 +126,121 @@ const OnboardingPage = () => {
                 onChange={(e) =>
                   setFormState({ ...formState, bio: e.target.value })
                 }
-                className="textarea textarea-bordered h-24 text-right"
+                className="textarea textarea-bordered h-24 text-right w-full"
                 placeholder="شاركنا قصتك: من أنت؟ ما هي خلفيتك؟ ما الذي دفعك لاختيار هذا المسار؟ وما هي أهم المهارات والخبرات التي اكتسبتها؟"
               />
             </div>
-
-            {/* LANGUAGES */}
-            <div dir="rtl" className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* NATIVE LANGUAGE */}
-              <div className="form-control ">
-                <label className="label">
-                  <span className="label-text">اللغة الأم</span>
-                </label>
-                <select
-                  name="nativeLanguage"
-                  value={formState.nativeLanguage}
-                  onChange={(e) =>
-                    setFormState({
-                      ...formState,
-                      nativeLanguage: e.target.value,
-                    })
-                  }
-                  className="select select-bordered w-full"
+            {authUser.type === "Provider" && (
+              <>
+                <div
+                  dir="rtl"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
-                  <option value="">اختر لغتك الأم</option>
-                  {LANGUAGES.map((lang) => (
-                    <option key={`native-${lang}`} value={lang.toLowerCase()}>
-                      {lang}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                  {/* NATIVE LANGUAGE */}
+                  <div className="form-control ">
+                    <label className="label">
+                      <span className="label-text">اللغة الأم</span>
+                    </label>
+                    <select
+                      name="nativeLanguage"
+                      value={formState.nativeLanguage}
+                      onChange={(e) =>
+                        setFormState({
+                          ...formState,
+                          nativeLanguage: e.target.value,
+                        })
+                      }
+                      className="select select-bordered w-full"
+                    >
+                      <option value="">اختر لغتك الأم</option>
+                      {LANGUAGES.map((lang) => (
+                        <option
+                          key={`native-${lang}`}
+                          value={lang.toLowerCase()}
+                        >
+                          {lang}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-              {/* LEARNING LANGUAGE */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">تخصصك</span>
-                </label>
-                <select
-                  name="learningLanguage"
-                  value={formState.learningLanguage}
-                  onChange={(e) =>
-                    setFormState({
-                      ...formState,
-                      learningLanguage: e.target.value,
-                    })
-                  }
-                  className="select select-bordered w-full"
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">تخصصك</span>
+                    </label>
+                    <select
+                      name="specialization"
+                      value={formState.specialization}
+                      onChange={(e) =>
+                        setFormState({
+                          ...formState,
+                          specialization: e.target.value,
+                        })
+                      }
+                      className="select select-bordered w-full"
+                    >
+                      <option value="">اختار تخصصك</option>
+                      {Specializations.map((lang) => (
+                        <option
+                          key={`learning-${lang}`}
+                          value={lang.toLowerCase()}
+                        >
+                          {lang}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div
+                  dir="rtl"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
-                  <option value="">اختار تخصصك</option>
-                  {Specializations.map((lang) => (
-                    <option key={`learning-${lang}`} value={lang.toLowerCase()}>
-                      {lang}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
+                  {/* experience */}
+                  <div className="form-control ">
+                    <label className="label">
+                      <span className="label-text">عدد سنين الخبرة</span>
+                    </label>
+                    <input
+                      type="number"
+                      name="experience"
+                      value={formState.yearsOfExperience}
+                      onChange={(e) =>
+                        setFormState({
+                          ...formState,
+                          yearsOfExperience: e.target.value,
+                        })
+                      }
+                      className="input input-bordered w-full pl-10"
+                      placeholder="5 سنوات"
+                    />
+                  </div>
 
+                  {/* price*/}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">
+                        سعر الاستشارة فى الساعة
+                      </span>
+                    </label>
+                    <input
+                      type="number"
+                      name="price"
+                      value={formState.price}
+                      onChange={(e) =>
+                        setFormState({ ...formState, price: e.target.value })
+                      }
+                      className="input input-bordered w-full pl-10"
+                      placeholder="200 جنيه"
+                    />
+                  </div>
+                </div>
+              </>
+            )}
             {/* LOCATION */}
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Location</span>
+              <label className="label  flex justify-end mb-2 text-right ">
+                <span className="label-text ">العنوان</span>
               </label>
               <div className="relative">
                 <MapPinIcon className="absolute top-1/2 transform -translate-y-1/2 left-3 size-5 text-base-content opacity-70" />
@@ -196,8 +251,8 @@ const OnboardingPage = () => {
                   onChange={(e) =>
                     setFormState({ ...formState, location: e.target.value })
                   }
-                  className="input input-bordered w-full pl-10"
-                  placeholder="City, Country"
+                  className="input input-bordered w-full pl-10 text-right"
+                  placeholder="المدينة، الدولة"
                 />
               </div>
             </div>

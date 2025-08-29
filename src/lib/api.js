@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { axiosInstance } from "./axios";
 import Cookies from "js-cookie";
 
@@ -12,6 +13,9 @@ export const signup = async (signupData) => {
     });
     return response.data;
   } catch (error) {
+    error?.message == "Network Error"
+      ? toast.error("هناك مشكلة فى الاتصال")
+      : toast.error("فشل تسجيل الدخول. يرجى التحقق من بياناتك");
     return error;
   }
 };
@@ -29,6 +33,10 @@ export const login = async (loginData) => {
 
     // Navigate to another page or update state
   } catch (error) {
+    error?.message == "Network Error"
+      ? toast.error("هناك مشكلة فى الاتصال")
+      : toast.error("فشل تسجيل الدخول. يرجى التحقق من بياناتك");
+
     return error;
   }
 };
@@ -44,7 +52,6 @@ export const getAuthUser = async () => {
     const response = await axiosInstance.get("/auth/me");
     return response.data;
   } catch (error) {
-    console.log("Error in getAuthUser:", error);
     return error;
   }
 };
@@ -69,6 +76,7 @@ export async function getOutgoingFriendReqs() {
   return response.data;
 }
 
+// Friend Requests
 export async function sendFriendRequest(userId) {
   const response = await axiosInstance.post(`/users/friend-request/${userId}`);
   return response.data;

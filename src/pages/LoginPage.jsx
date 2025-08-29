@@ -13,7 +13,6 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     loginMutation(loginData);
-    console.log(error);
   };
 
   return (

@@ -13,6 +13,7 @@ import {
   Thread,
   Window,
 } from "stream-chat-react";
+
 import { StreamChat } from "stream-chat";
 import toast from "react-hot-toast";
 
@@ -49,12 +50,11 @@ const ChatPage = () => {
           {
             id: authUser._id,
             name: authUser.fullName,
-            image: authUser.profilePic,
+            image: authUser.profilePicture,
           },
           tokenData.token
         );
 
-        //
         const channelId = [authUser._id, targetUserId].sort().join("-");
 
         // you and me
@@ -95,7 +95,7 @@ const ChatPage = () => {
   if (loading || !chatClient || !channel) return <ChatLoader />;
 
   return (
-    <div className="h-[93vh]">
+    <div className="h-screen">
       <Chat client={chatClient}>
         <Channel channel={channel}>
           <div className="w-full relative">

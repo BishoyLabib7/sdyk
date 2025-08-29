@@ -9,6 +9,7 @@ const SignUpPage = () => {
     fullName: "",
     email: "",
     password: "",
+    type: "User",
   });
 
   const { isPending, error, signupMutation } = useSignUp();
@@ -109,6 +110,28 @@ const SignUpPage = () => {
                     />
                     <p className="text-xs opacity-70 mt-1">
                       يجب أن تكون كلمة المرور مكونة من 6 أحرف على الأقل
+                    </p>
+                  </div>
+
+                  <div dir="rtl" className="form-control w-full">
+                    <label className="label ml-5">
+                      <span className="label-text">دخول كا:</span>
+                    </label>
+                    <select
+                      className="select select-bordered w-full"
+                      value={signupData.type}
+                      onChange={(e) =>
+                        setSignupData({ ...signupData, type: e.target.value })
+                      }
+                      required
+                    >
+                      <option value="User" defaultValue={"User"}>
+                        مستخدم
+                      </option>
+                      <option value="Provider">خبير</option>
+                    </select>
+                    <p className="text-xs opacity-70 mt-1">
+                      يجب اختيار نوع الحساب بعناية، حيث لا يمكن تغييره لاحقًا.
                     </p>
                   </div>
 

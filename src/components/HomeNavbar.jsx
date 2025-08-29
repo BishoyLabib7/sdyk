@@ -13,12 +13,18 @@ const navItems = [
   { name: " بطاقات الخصم", link: "/ads" },
   { name: "الاخبار", link: "/news" },
   { name: "الخبرات", link: "/services" },
+  { name: "الاصدقاء", link: "/friends" },
 ];
 
 export default function Navbar({ type = "" }) {
   const { logoutMutation } = useLogout();
   const [navbar, setNavbar] = React.useState(false);
   const [minbar, setMinbar] = React.useState(false);
+
+  const { authUser } = useAuthUser();
+  const isAuthenticated = Boolean(authUser);
+  const isOnboarded = authUser?.isOnboarded;
+
   window.addEventListener("scroll", () => {
     const scroll = window.pageYOffset || document.documentElement.scroll;
     if (scroll > 50) {
@@ -27,8 +33,6 @@ export default function Navbar({ type = "" }) {
       setNavbar(false);
     }
   });
-  const { authUser } = useAuthUser();
-  const isAuthenticated = Boolean(authUser);
 
   return (
     <>
@@ -91,21 +95,28 @@ export default function Navbar({ type = "" }) {
               navbar || type !== "home" ? "text-[#222222]" : " text-[#ffede8]"
             }  transition-all duration-300`}
           >
-            {navItems.map((link) => (
-              <Link
-                to={link.link}
-                className={`font-semibold cursor-pointer px-3 py-1  hover:text-green-100 hover:bg-green-500 transition-all duration-300 rounded-lg  hover:scale-110 active`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navItems.map((link) =>
+              link.link === "/friends" &&
+              !isAuthenticated &&
+              !isOnboarded ? null : (
+                <Link
+                  to={link.link}
+                  className={`font-semibold cursor-pointer px-3 py-1  hover:text-green-100 hover:bg-green-500 transition-all duration-300 rounded-lg  hover:scale-110 active`}
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
           </NavLink>
 
           <div className="lg:flex flex-row-reverse justify-between items-center gap-4 hidden">
             <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>
               <Button
+                style="text-right"
                 text={`${
-                  isAuthenticated ? `${authUser.fullName}..مرحبا` : "انضمام"
+                  isAuthenticated
+                    ? `${authUser?.fullName?.split(" ")[0]} ..مرحبا`
+                    : "انضمام"
                 }`}
               />
             </Link>

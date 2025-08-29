@@ -6,6 +6,7 @@ export default function Button({
   type = "primary",
   style = "",
   reverse = false,
+  disable = false,
   children,
 }) {
   return (
@@ -20,6 +21,7 @@ export default function Button({
             } bg-none`
       }  font-bold md:py-2 py-1 md:px-8 px-5 rounded-full  transition duration-300 cursor-pointer ${style}`}
       onClick={onClick}
+      disabled={disable}
     >
       {text}
       {children}

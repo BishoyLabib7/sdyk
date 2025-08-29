@@ -1,10 +1,11 @@
-import { lazy } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router";
 import { Toaster } from "react-hot-toast";
+import { lazy } from "react";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
 import AppLayout from "./components/AppLayout.jsx";
 import Experiences from "./pages/Experiences.jsx";
+import Friends from "./pages/Friends.jsx";
 import ShopPage from "./pages/ShopPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
@@ -28,17 +29,16 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Toaster />
         <Routes>
-          {" "}
           <Route index element={<Home />} />
           <Route element={<AppLayout />}>
             <Route path="/services" element={<Experiences />} />{" "}
+            <Route path="/friends" element={<Friends />} />{" "}
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/shop/:id" element={<Product />} />
           </Route>
           <Route
-            path="/"
+            path="/home"
             element={
               isAuthenticated && isOnboarded ? (
                 <Layout showSidebar={true}>
@@ -118,7 +118,27 @@ function App() {
             }
           />
           <Route path="*" element={<NotFound />} />
-        </Routes>
+        </Routes>{" "}
+        <Toaster
+          position="top-center"
+          gutter={12}
+          containerStyle={{ margin: "8px" }}
+          toastOptions={{
+            success: {
+              duration: 3000,
+            },
+            error: {
+              duration: 5000,
+            },
+            style: {
+              fontSize: "16px",
+              maxWidth: "500px",
+              padding: "16px 24px",
+              backgroundColor: "#fff",
+              color: "#333448",
+            },
+          }}
+        />
       </BrowserRouter>
     </>
   );
