@@ -8,7 +8,6 @@ import {
   LoaderIcon,
   MapPinIcon,
   ShipWheelIcon,
-  ShuffleIcon,
 } from "lucide-react";
 import { LANGUAGES, Specializations } from "../constants";
 
@@ -40,17 +39,27 @@ const OnboardingPage = () => {
     },
   });
 
+  const [buttonText, setButtonText] = useState("ارفع صورة لك");
+  const handleFileChange = (event) => {
+    if (event.target.files.length > 0) {
+      setButtonText("تغيير الصورة");
+    } else {
+      setButtonText("ارفع صورة لك");
+    }
+
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = () => {
+      setFormState({ ...formState, profilePic: reader.result });
+    };
+    reader.onerror = () => {
+      toast.error("هناك مشكلة فى الصورة");
+    };
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onboardingMutation(formState);
-  };
-
-  const handleRandomAvatar = () => {
-    const idx = Math.floor(Math.random() * 100) + 1; // 1-100 included
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
-
-    setFormState({ ...formState, profilePic: randomAvatar });
-    toast.success("Random profile picture generated!");
   };
 
   return (
@@ -83,15 +92,18 @@ const OnboardingPage = () => {
               </div>
 
               {/* Generate Random Avatar BTN */}
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleRandomAvatar}
-                  className="btn btn-accent"
-                >
-                  <ShuffleIcon className="size-4 mr-2" />
-                  عمل صورة رمزية عشوائية
-                </button>
+              <div className="flex items-center gap-2 btn btn-accent">
+                <label htmlFor="file-upload" className="custom-file-upload">
+                  {buttonText}
+                </label>
+
+                <input
+                  type="file"
+                  id="file-upload"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
               </div>
             </div>
 

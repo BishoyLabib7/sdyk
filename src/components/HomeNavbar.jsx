@@ -1,11 +1,17 @@
 import React from "react";
 import Button from "./Button";
 import { FiMenu } from "react-icons/fi";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation, useParams } from "react-router";
 import Sidebar from "./MobileSidebar";
 import { FaXmark } from "react-icons/fa6";
 import useAuthUser from "../hooks/useAuthUser";
 import useLogout from "../hooks/useLogout";
+import {
+  CircleUserRound,
+  HeartPlus,
+  ShoppingCart,
+  SquareArrowLeft,
+} from "lucide-react";
 
 const navItems = [
   { name: "الرئيسيه", link: "/" },
@@ -21,9 +27,13 @@ export default function Navbar({ type = "" }) {
   const [navbar, setNavbar] = React.useState(false);
   const [minbar, setMinbar] = React.useState(false);
 
+  const url = useLocation().pathname.split("/")[1];
+
   const { authUser } = useAuthUser();
   const isAuthenticated = Boolean(authUser);
   const isOnboarded = authUser?.isOnboarded;
+
+  console.log(authUser);
 
   window.addEventListener("scroll", () => {
     const scroll = window.pageYOffset || document.documentElement.scroll;
@@ -46,50 +56,20 @@ export default function Navbar({ type = "" }) {
       <div
         className={` lg:text-amber-50 body-font px-5 ${
           navbar || type !== "home"
-            ? "bg-[#ffede8] !text-[#c9c8c8] fixed w-full top-0 left-0 z-100 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
+            ? "bg-[#ffede8] fixed w-full top-0 left-0 z-100 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
             : "bg-transparent"
         } transition-all duration-300`}
       >
-        <div className="container mx-auto flex  flex-wrap p-1 flex-col lg:flex-row-reverse lg:items-center">
-          <div className="flex flex-row-reverse items-center lg:justify-center justify-between">
-            <img
-              loading="lazy"
-              className="md:size-18 size-12"
-              src="/logo.webp"
-              alt=""
-            />
+        <div className="flex flex-row-reverse items-center lg:justify-center justify-between gap-5">
+          {/* logo */}
+          <img
+            loading="lazy"
+            className="md:size-18 size-12"
+            src="/logo.webp"
+            alt=""
+          />
 
-            <div className="flex flex-row-reverse items-center gap-4">
-              <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>
-                <Button
-                  text={`${
-                    isAuthenticated ? `${authUser.fullName}..مرحبا` : "انضمام"
-                  }`}
-                  style="lg:hidden block"
-                />
-              </Link>
-              {minbar ? (
-                <FaXmark
-                  className={`size-8 lg:hidden block ${
-                    navbar || type !== "home"
-                      ? "text-[#222222]"
-                      : " text-[#ffede8]"
-                  }`}
-                  onClick={() => setMinbar((minbar) => !minbar)}
-                />
-              ) : (
-                <FiMenu
-                  className={`size-8 lg:hidden block ${
-                    navbar || type !== "home"
-                      ? "text-[#222222]"
-                      : " text-[#ffede8]"
-                  }`}
-                  onClick={() => setMinbar((minbar) => !minbar)}
-                />
-              )}
-            </div>
-          </div>
-
+          {/* links */}
           <NavLink
             className={`lg:ml-auto  lg:mr-4 lg:py-1 lg:pr-4 lg:border-r lg:border-gray-400	 lg:flex-row-reverse flex-col items-center text-xl justify-between cursor-pointer gap-10 lg:flex hidden ${
               navbar || type !== "home" ? "text-[#222222]" : " text-[#ffede8]"
@@ -109,30 +89,102 @@ export default function Navbar({ type = "" }) {
             )}
           </NavLink>
 
-          <div className="lg:flex flex-row-reverse justify-between items-center gap-4 hidden">
-            <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>
-              <Button
-                style="text-right"
-                text={`${
-                  isAuthenticated
-                    ? `${authUser?.fullName?.split(" ")[0]} ..مرحبا`
-                    : "انضمام"
-                }`}
-              />
-            </Link>
-            <Link to={`${isAuthenticated ? "/" : "./login"}`}>
-              <Button
-                type="secounder"
-                reverse={navbar || type !== "home"}
-                onClick={isAuthenticated && logoutMutation}
-              >
+          {/* buttons */}
+          <div className=" flex justify-between">
+            <div
+              className={`flex flex-row-reverse justify-between items-center lg:gap-6 gap-4 ${
+                url == "shop" ? "" : "hidden"
+              }`}
+            >
+              <HeartPlus className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+              <ShoppingCart className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+              {authUser ? (
+                <div
+                  className={`flex gap-5 items-center text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]ont-bold lg:pl-5 pl-3 pr-0.5 rounded-full  transition duration-300 cursor-pointer `}
+                >
+                  <h1 className="font-bold">
+                    {authUser.fullName.split(" ")[0]}
+                  </h1>
+                  <img
+                    src={authUser.profilePicture}
+                    alt=""
+                    className=" rounded-full lg:size-10 size-8 "
+                  />
+                </div>
+              ) : (
+                <CircleUserRound className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+              )}
+            </div>
+
+            <div
+              className={`flex flex-row-reverse justify-between items-center gap-4 ${
+                url == "shop" ? "hidden" : ""
+              }`}
+            >
+              <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>
                 {isAuthenticated ? (
-                  <span>&#8592; تسجيل الخروج </span>
+                  <div
+                    className={`flex gap-5 justify-center items-center text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]ont-bold lg:pl-5 pl-2  rounded-full  transition duration-300 cursor-pointer`}
+                  >
+                    <h1 className="font-bold text-right">
+                      {authUser.fullName.split(" ")[0]}
+                    </h1>
+                    <img
+                      src={authUser.profilePicture}
+                      alt=""
+                      className=" rounded-full lg:size-11 size-8"
+                    />
+                  </div>
                 ) : (
-                  "تسجيل دخول"
+                  <Button style="text-right" text="انضمام" />
                 )}
-              </Button>
-            </Link>
+              </Link>
+              <Link to={`${isAuthenticated ? "/" : "./login"}`}>
+                <Button
+                  type="secounder"
+                  reverse={navbar || type !== "home"}
+                  onClick={isAuthenticated && logoutMutation}
+                  style="text-sm lg:block hidden"
+                >
+                  {isAuthenticated ? (
+                    <span>&#8592; تسجيل الخروج </span>
+                  ) : (
+                    "تسجيل دخول"
+                  )}
+                </Button>
+
+                <div className="flex lg:hidden justify-centet bg-thirdBg py-1 px-2 rounded-full gap-2">
+                  <SquareArrowLeft
+                    className="cursor-pointer"
+                    onClick={isAuthenticated && logoutMutation}
+                  />{" "}
+                  <span className="font-semibold text-sm">خروج</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          {/* minbar */}
+          <div className="flex flex-row-reverse items-center gap-4">
+            {minbar ? (
+              <FaXmark
+                className={`size-8 lg:hidden block ${
+                  navbar || type !== "home"
+                    ? "text-[#222222]"
+                    : " text-[#ffede8]"
+                }`}
+                onClick={() => setMinbar((minbar) => !minbar)}
+              />
+            ) : (
+              <FiMenu
+                className={`size-8 lg:hidden block ${
+                  navbar || type !== "home"
+                    ? "text-[#222222]"
+                    : " text-[#ffede8]"
+                }`}
+                onClick={() => setMinbar((minbar) => !minbar)}
+              />
+            )}
           </div>
         </div>
       </div>
