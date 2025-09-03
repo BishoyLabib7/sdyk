@@ -144,22 +144,24 @@ export default function Navbar({ type = "" }) {
                   type="secounder"
                   reverse={navbar || type !== "home"}
                   onClick={isAuthenticated && logoutMutation}
-                  style="text-sm lg:block hidden"
+                  style={`lg:text-sm text-[0.7rem] ${
+                    isAuthenticated && "lg:block hidden"
+                  }`}
                 >
-                  {isAuthenticated ? (
-                    <span>&#8592; تسجيل الخروج </span>
-                  ) : (
-                    "تسجيل دخول"
-                  )}
+                  تسجيل دخول
                 </Button>
 
-                <div className="flex lg:hidden justify-centet bg-thirdBg py-1 px-2 rounded-full gap-2">
-                  <SquareArrowLeft
-                    className="cursor-pointer"
-                    onClick={isAuthenticated && logoutMutation}
-                  />{" "}
-                  <span className="font-semibold text-sm">خروج</span>
-                </div>
+                {isAuthenticated ? (
+                  <div className="flex lg:hidden justify-centet bg-thirdBg py-1 px-2 rounded-full gap-2">
+                    <SquareArrowLeft
+                      className="cursor-pointer"
+                      onClick={isAuthenticated && logoutMutation}
+                    />{" "}
+                    <span className="font-semibold text-sm">خروج</span>
+                  </div>
+                ) : (
+                  ""
+                )}
               </Link>
             </div>
           </div>
