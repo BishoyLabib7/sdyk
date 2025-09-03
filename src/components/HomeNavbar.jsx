@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import { FiMenu } from "react-icons/fi";
-import { Link, NavLink, useLocation, useParams } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import Sidebar from "./MobileSidebar";
 import { FaXmark } from "react-icons/fa6";
 import useAuthUser from "../hooks/useAuthUser";

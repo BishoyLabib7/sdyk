@@ -119,16 +119,15 @@ function App() {
           <Route
             path="/onboarding"
             element={
-              <OnboardingPage />
-              // isAuthenticated ? (
-              //   !isOnboarded ? (
-              //     <OnboardingPage />
-              //   ) : (
-              //     <Navigate to="/" />
-              //   )
-              // ) : (
-              //   <Navigate to="/login" />
-              // )
+              isAuthenticated ? (
+                !isOnboarded ? (
+                  <OnboardingPage />
+                ) : (
+                  <Navigate to="/" />
+                )
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route path="*" element={<NotFound />} />

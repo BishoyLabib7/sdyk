@@ -10,7 +10,7 @@ import {
   ShipWheelIcon,
 } from "lucide-react";
 import { LANGUAGES, Specializations } from "../constants";
-import { useNavigate, useNavigation } from "react-router";
+import { useNavigate } from "react-router";
 
 const OnboardingPage = () => {
   const { authUser } = useAuthUser();
