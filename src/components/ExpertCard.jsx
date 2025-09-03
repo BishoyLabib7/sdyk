@@ -25,7 +25,7 @@ export default function ExpertCard({
   const [onclickButton, setonclicButton] = useState(false);
   function handleButton() {
     if (type === "/services") {
-      // handleSendRequest();
+      handleSendRequest();
       setonclicButton(true);
     } else {
       handleChat();
@@ -90,25 +90,29 @@ export default function ExpertCard({
           </div>
           <div className="flex flex-col gap-5">
             <Button
-              text={type === "/services" ? "من انا" : "إبدأ المحادثة"}
-              style=" md:text-[1rem]  text-sm"
+              text={type === "/services" ? "من انا" : "إبدأ الدردشة"}
+              style={` text-sm ${
+                type === "/services" ? "md:text-[1rem]" : "md:text-[1.5rem] "
+              }`}
               type="primary"
+              onClick={() => type !== "/services" && handleButton()}
             />
-
-            <button
-              type="button"
-              onClick={() => handleButton()}
-              className={`border font-bold md:py-2 py-1 md:px-8 px-5 rounded-full  transition duration-300 text-green-800 border-green-700 md:text-[1rem] text-sm ${
-                onclickButton ? "cursor-not-allowed" : "cursor-pointer"
-              } text-center disabled:bg-gray-300`}
-              disabled={onclickButton}
-            >
-              {type === "/services"
-                ? onclickButton
-                  ? "تم ارسال طلب الصداقة"
-                  : "طلب صداقة"
-                : "ارسال رسالة"}
-            </button>
+            {type === "/services" && (
+              <button
+                type="button"
+                onClick={() => handleButton()}
+                className={`border font-bold md:py-2 py-1 md:px-8 px-5 rounded-full  transition duration-300 text-green-800 border-green-700 md:text-[1rem] text-sm ${
+                  onclickButton ? "cursor-not-allowed" : "cursor-pointer"
+                } text-center disabled:bg-gray-300`}
+                disabled={onclickButton}
+              >
+                {type === "/services"
+                  ? onclickButton
+                    ? "تم ارسال طلب الصداقة"
+                    : "طلب صداقة"
+                  : "ارسال رسالة"}
+              </button>
+            )}
           </div>
         </div>
       </div>

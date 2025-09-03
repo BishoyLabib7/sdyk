@@ -35,11 +35,20 @@ function App() {
           <Route index element={<Home />} />
           <Route element={<AppLayout />}>
             <Route path="/services" element={<Experiences />} />{" "}
-            <Route path="/friends" element={<Friends />} />{" "}
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/shop/:id" element={<Product />} />
-            <Route path="/shop/Cart/:id" element={<Cart />} />
-            <Route path="/shop/checkout/:id" element={<CheckOut />} />
+            <Route path="/shop/Cart" element={<Cart />} />
+            <Route path="/shop/checkout" element={<CheckOut />} />{" "}
+            <Route
+              path="/friends"
+              element={
+                isAuthenticated && isOnboarded ? (
+                  <Friends />
+                ) : (
+                  <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+                )
+              }
+            />
           </Route>
           <Route
             path="/home"
@@ -110,15 +119,16 @@ function App() {
           <Route
             path="/onboarding"
             element={
-              isAuthenticated ? (
-                !isOnboarded ? (
-                  <OnboardingPage />
-                ) : (
-                  <Navigate to="/" />
-                )
-              ) : (
-                <Navigate to="/login" />
-              )
+              <OnboardingPage />
+              // isAuthenticated ? (
+              //   !isOnboarded ? (
+              //     <OnboardingPage />
+              //   ) : (
+              //     <Navigate to="/" />
+              //   )
+              // ) : (
+              //   <Navigate to="/login" />
+              // )
             }
           />
           <Route path="*" element={<NotFound />} />

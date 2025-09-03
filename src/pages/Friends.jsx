@@ -20,7 +20,6 @@ export default function Experiences() {
 
   return (
     <div className="w-full md:py-30 py-20 ">
-      {friends?.length !== 0 && <ActiveExperts friends={friends} />}
       <div className="lg:w-[90%] w-full flex xl:flex-row-reverse flex-col justify-center gap-10 lg:mx-10">
         <div className="lg:w-[40%] xl:bg-white rounded-xl lg:p-5 lg:row-span-2">
           {friends && (

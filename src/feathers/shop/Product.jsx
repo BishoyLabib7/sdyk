@@ -151,7 +151,7 @@ export default function Product() {
                 </button>
               </div>
               <Link
-                to={`/shop/cart/${id.id}`}
+                to={`/shop/cart`}
                 className="text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]cursor-pointer border-1 border-secondarBg rounded-lg px-4 lg:text-lg text-sm font-bold md:py-2 py-1 md:px-8 transition duration-300 cursor-pointer"
               >
                 اشترى الان

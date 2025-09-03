@@ -10,6 +10,7 @@ import {
   ShipWheelIcon,
 } from "lucide-react";
 import { LANGUAGES, Specializations } from "../constants";
+import { useNavigate, useNavigation } from "react-router";
 
 const OnboardingPage = () => {
   const { authUser } = useAuthUser();
@@ -21,13 +22,17 @@ const OnboardingPage = () => {
     nativeLanguage: authUser?.nativeLanguage || "english",
     learningLanguage: "english",
     location: authUser?.location || "",
-    profilePic: authUser?.profilePic || "",
+    profilePicture: authUser?.profilePicture || "",
     price: 0,
     yearsOfExperience: 0,
     specialization: "",
   });
 
-  const { mutate: onboardingMutation, isPending } = useMutation({
+  const {
+    mutate: onboardingMutation,
+    isPending,
+    error,
+  } = useMutation({
     mutationFn: completeOnboarding,
     onSuccess: () => {
       toast.success("Profile onboarded successfully");
@@ -39,6 +44,8 @@ const OnboardingPage = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const [buttonText, setButtonText] = useState("ارفع صورة لك");
   const handleFileChange = (event) => {
     if (event.target.files.length > 0) {
@@ -47,19 +54,31 @@ const OnboardingPage = () => {
       setButtonText("ارفع صورة لك");
     }
 
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = () => {
-      setFormState({ ...formState, profilePic: reader.result });
-    };
-    reader.onerror = () => {
-      toast.error("هناك مشكلة فى الصورة");
-    };
+    const file = event.target.files[0];
+    const sizeKB = (file.size / 1024).toFixed(2);
+    if (sizeKB > 5) {
+      toast.error("error");
+
+      setFormState({
+        ...formState,
+        profilePicture: authUser?.profilePicture,
+      });
+    } else {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = () => {
+        setFormState({ ...formState, profilePicture: reader.result });
+      };
+      reader.onerror = () => {
+        toast.error("هناك مشكلة فى الصورة");
+      };
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onboardingMutation(formState);
+    if (!error) navigate("/");
   };
 
   return (
@@ -78,9 +97,9 @@ const OnboardingPage = () => {
             <div className="flex flex-col items-center justify-center space-y-4">
               {/* IMAGE PREVIEW */}
               <div className="size-32 rounded-full bg-base-300 overflow-hidden">
-                {formState.profilePic ? (
+                {formState.profilePicture ? (
                   <img
-                    src={formState.profilePic}
+                    src={formState.profilePicture}
                     alt="Profile Preview"
                     className="w-full h-full object-cover"
                   />

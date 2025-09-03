@@ -95,7 +95,9 @@ export default function Navbar({ type = "" }) {
               }`}
             >
               <HeartPlus className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
-              <ShoppingCart className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+              <Link to="/shop/cart">
+                <ShoppingCart className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+              </Link>
               {authUser ? (
                 <div
                   className={`flex gap-5 items-center text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]ont-bold lg:pl-5 pl-3 pr-0.5 rounded-full  transition duration-300 cursor-pointer `}
@@ -110,7 +112,9 @@ export default function Navbar({ type = "" }) {
                   />
                 </div>
               ) : (
-                <CircleUserRound className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+                <Link to="/login">
+                  <CircleUserRound className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+                </Link>
               )}
             </div>
 
@@ -146,7 +150,7 @@ export default function Navbar({ type = "" }) {
                     isAuthenticated && "lg:block hidden"
                   }`}
                 >
-                  تسجيل دخول
+                  {isAuthenticated ? "تسجيل الخروج" : " تسجيل دخول"}
                 </Button>
 
                 {isAuthenticated ? (

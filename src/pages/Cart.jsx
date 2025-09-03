@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 import { prouducts } from "../constants";
-import { Link, useParams } from "react-router";
+import { Link } from "react-router";
 
 export default function Cart() {
   let total = 0;
-  const id = useParams().id;
   for (let i = 0; i < prouducts.length; i++) {
     total += prouducts[i].price;
   }
@@ -13,11 +11,13 @@ export default function Cart() {
       <div className=" text-black p-6 rounded-lg shadow-lg flex gap-10 flex-col justify-center items-end">
         <div className="w-full flex justify-between">
           <Link to="/shop">
-            <button className="text-center cursor-pointer border-1 border-b-neutral-800-200 text-xl px-5  rounded-lg py-2">
+            <button className="text-center cursor-pointer border-1 border-b-neutral-800-200 lg:text-xl text-sm px-5 rounded-lg py-2">
               رجوع للمتجر
             </button>
           </Link>
-          <h2 className="text-3xl font-bold mb-4 text-right">المشتريات</h2>
+          <h2 className="lg:text-3xl text-xl font-bold mb-4 text-right">
+            المشتريات
+          </h2>
         </div>
 
         <div className="w-full   hidden md:block">
@@ -119,7 +119,7 @@ export default function Cart() {
             <p className="text-red-800 font-bold">${total}</p>
             <p className="font-semibold">المجموع</p>
           </div>{" "}
-          <Link to={`/shop/checkout/${id}`}>
+          <Link to={`/shop/checkout`}>
             <div className="w-full  text-center cursor-pointer bg-primaryBg text-white font-extrabold text-xl py-3 px-10 rounded-lg mt-5">
               اكمل الدفع
             </div>
