@@ -33,8 +33,6 @@ export default function Navbar({ type = "" }) {
   const isAuthenticated = Boolean(authUser);
   const isOnboarded = authUser?.isOnboarded;
 
-  console.log(authUser);
-
   window.addEventListener("scroll", () => {
     const scroll = window.pageYOffset || document.documentElement.scroll;
     if (scroll > 50) {

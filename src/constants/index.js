@@ -162,6 +162,43 @@ export const THEMES = [
   },
 ];
 
+export const prouducts = [
+  {
+    id: 1,
+    name: "لوحة ألعاب HAVIT HV-G92",
+    price: 960,
+    oldPrice: 1160,
+    img: "/shop/p5.png",
+    rate: 4,
+    quantity: 1,
+  },
+  {
+    id: 2,
+    name: "لوحة مفاتيح سلكية AK-900",
+    price: 200,
+    img: "/shop/p6.png",
+    rate: 2,
+    quantity: 1,
+  },
+  {
+    id: 3,
+    name: "مبرد وحدة المعالجة المركزية  ",
+    price: 550,
+    img: "/shop/p7.png",
+    rate: 5,
+    quantity: 1,
+  },
+  {
+    id: 4,
+    name: "كمبيوتر محمول للألعاب ",
+    price: 960,
+    oldPrice: 1160,
+    img: "/shop/p8.png",
+    rate: 3,
+    quantity: 1,
+  },
+];
+
 export const LANGUAGES = [
   "العربية",
   "English",

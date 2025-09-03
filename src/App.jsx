@@ -19,6 +19,8 @@ import useAuthUser from "./hooks/useAuthUser.js";
 import Layout from "./components/Layout.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Product from "./feathers/shop/Product.jsx";
+import CheckOut from "./pages/CheckOut.jsx";
+import Cart from "./pages/Cart.jsx";
 
 function App() {
   const { isLoading, authUser } = useAuthUser();
@@ -36,6 +38,8 @@ function App() {
             <Route path="/friends" element={<Friends />} />{" "}
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/shop/:id" element={<Product />} />
+            <Route path="/shop/Cart/:id" element={<Cart />} />
+            <Route path="/shop/checkout/:id" element={<CheckOut />} />
           </Route>
           <Route
             path="/home"

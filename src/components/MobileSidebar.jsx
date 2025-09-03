@@ -9,10 +9,10 @@ function Sidebar({ close, type }) {
     { name: "الاصدقاء", link: "/friends" },
   ];
   return (
-    <div
-      className={`w-52 flex flex-col justify-start items-center gap-1 px-1 ${
+    <aside
+      className={`w-64 h-screen top-0 fixed flex lg:hidden flex-col justify-start items-center gap-1 px-1 ${
         type ? "py-1" : "py-11"
-      } bg-[#ffede8] fixed h-full z-50 right-0 shadow-2xl shadow-[rgba(91, 187, 123, 0.15)]`}
+      } bg-[#ffede8] z-50 right-0 shadow-2xl shadow-[rgba(91, 187, 123, 0.15)]`}
     >
       {type && (
         <img loading="lazy" className="size-18 mt-4" src="/logo.webp" alt="" />
@@ -28,7 +28,7 @@ function Sidebar({ close, type }) {
           </Link>
         ))}
       </NavLink>
-    </div>
+    </aside>
   );
 }
 

@@ -3,38 +3,10 @@ import { HeartPlus, RefreshCcw, Star, Truck } from "lucide-react";
 import Stars from "../../components/Stars";
 import Slider from "react-slick";
 import SampleNextArrow from "../../components/Arrows";
-const prouducts = [
-  {
-    id: 1,
-    name: "لوحة ألعاب HAVIT HV-G92",
-    price: 960,
-    oldPrice: 1160,
-    img: "/shop/p5.png",
-    rate: 4,
-  },
-  {
-    id: 2,
-    name: "لوحة مفاتيح سلكية AK-900",
-    price: 200,
-    img: "/shop/p6.png",
-    rate: 2,
-  },
-  {
-    id: 3,
-    name: "مبرد وحدة المعالجة المركزية  ",
-    price: 550,
-    img: "/shop/p7.png",
-    rate: 5,
-  },
-  {
-    id: 4,
-    name: "كمبيوتر محمول للألعاب ",
-    price: 960,
-    oldPrice: 1160,
-    img: "/shop/p8.png",
-    rate: 3,
-  },
-];
+import { useState } from "react";
+import { Link, useParams } from "react-router";
+import { prouducts } from "../../constants";
+
 const settings = {
   infinite: true,
   speed: 500,
@@ -74,9 +46,14 @@ const settings = {
 };
 
 export default function Product() {
+  const [size, setSize] = useState(2);
+  const [color, setColor] = useState(2);
+  const id = useParams();
+  console.log(id);
+
   return (
     <>
-      <div className="md:w-[80%] min-h-screen flex flex-col justify-center items-center mx-auto my-30">
+      <div className="md:w-[80%] min-h-screen flex flex-col justify-center items-center mx-auto mt-20">
         <div
           dir="rtl"
           className="w-full flex lg:flex-row flex-col justify-content-center align-items-center gap-5 my-5 "
@@ -97,16 +74,36 @@ export default function Product() {
             <div className="flex gap-5">
               <h3> الحجم</h3>
               <div className="flex gap-2">
-                <div className="text-center cursor-pointer w-7 h-7 rounded-lg border-2 border-primaryBg">
+                <div
+                  className={`${
+                    size == 1 && "text-white bg-primaryBg  "
+                  } text-center cursor-pointer w-7 h-7 rounded-lg border-2 border-primaryBg`}
+                  onClick={() => setSize(1)}
+                >
                   S
                 </div>
-                <div className=" text-center cursor-pointer w-7 h-7 rounded-lg border-2 border-primaryBg">
+                <div
+                  className={`${
+                    size == 2 && "text-white bg-primaryBg  "
+                  } text-center cursor-pointer w-7 h-7 rounded-lg border-2 border-primaryBg`}
+                  onClick={() => setSize(2)}
+                >
                   M
                 </div>
-                <div className=" text-center cursor-pointer text-white bg-primaryBg w-7 h-7 rounded-lg border-2 border-primaryBg">
+                <div
+                  className={`${
+                    size == 3 && "text-white bg-primaryBg  "
+                  } text-center cursor-pointer w-7 h-7 rounded-lg border-2 border-primaryBg`}
+                  onClick={() => setSize(3)}
+                >
                   L
                 </div>
-                <div className=" text-center cursor-pointer  w-7 h-7 rounded-lg border-2 border-primaryBg">
+                <div
+                  className={`${
+                    size == 4 && "text-white bg-primaryBg  "
+                  } text-center cursor-pointer w-7 h-7 rounded-lg border-2 border-primaryBg`}
+                  onClick={() => setSize(4)}
+                >
                   XL
                 </div>
               </div>
@@ -114,10 +111,30 @@ export default function Product() {
             <div className="flex gap-5">
               <h3> الوان</h3>
               <div className="flex gap-2">
-                <div className=" cursor-pointer bg-blue-500 w-6 h-6 rounded-full "></div>
-                <div className=" cursor-pointer bg-red-500 w-6 h-6 rounded-full "></div>
-                <div className=" cursor-pointer bg-green-500 w-6 h-6 rounded-full "></div>
-                <div className=" cursor-pointer bg-yellow-500 w-6 h-6 rounded-full "></div>
+                <div
+                  className={` ${
+                    color == 1 && "border-3"
+                  } cursor-pointer bg-blue-500 w-6 h-6 rounded-full `}
+                  onClick={() => setColor(1)}
+                ></div>
+                <div
+                  className={` ${
+                    color == 2 && "border-3"
+                  } cursor-pointer bg-red-500 w-6 h-6 rounded-full `}
+                  onClick={() => setColor(2)}
+                ></div>
+                <div
+                  className={` ${
+                    color == 3 && "border-3"
+                  }  cursor-pointer bg-green-500 w-6 h-6 rounded-full `}
+                  onClick={() => setColor(3)}
+                ></div>
+                <div
+                  className={` ${
+                    color == 4 && "border-3"
+                  } cursor-pointer bg-yellow-500 w-6 h-6 rounded-full `}
+                  onClick={() => setColor(4)}
+                ></div>
               </div>
             </div>
 
@@ -133,9 +150,12 @@ export default function Product() {
                   -
                 </button>
               </div>
-              <button className="cursor-pointer border-1  bg-primaryBg text-white border-primaryBge rounded-lg px-5">
+              <Link
+                to={`/shop/cart/${id.id}`}
+                className="text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]cursor-pointer border-1 border-secondarBg rounded-lg px-4 lg:text-lg text-sm font-bold md:py-2 py-1 md:px-8 transition duration-300 cursor-pointer"
+              >
                 اشترى الان
-              </button>
+              </Link>
               <button className="cursor-pointer border-2    border-primaryBge rounded-lg px-2">
                 <HeartPlus />
               </button>
@@ -192,6 +212,7 @@ export default function Product() {
           </div>
         </div>
 
+        {/* mobile screen */}
         <div className="w-[90%] mx-auto lg:hidden block  ">
           <Slider className="" {...settings}>
             <div className="w-[90%] bg-white flex justify-center items-center p-10 rounded-3xl">
