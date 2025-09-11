@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { LANGUAGES, Specializations } from "../constants";
 import { useNavigate } from "react-router";
+import useLogout from "../hooks/useLogout";
 
 export default function Accout() {
   const { isLoading, authUser } = useAuthUser();
@@ -25,11 +26,11 @@ export default function Accout() {
       {isLoading ? (
         <PageLoader />
       ) : (
-        <div className="flex lg:flex-row-reverse flex-col h-screen w-[90%] mx-auto mt-20">
+        <div className="flex lg:flex-row-reverse flex-col w-[90%] mx-auto mt-20">
           <Sidebar type={authUser.type} />
           <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
             {/* <Header /> */}
-            <main className="flex-1 w-full bg-white rounded overflow-auto p-6">
+            <main className="flex-1 w-full rounded-2xl overflow-auto p-6">
               {pathname === "/account" && <UpdateInfor />}
               <Outlet />
             </main>
@@ -42,7 +43,12 @@ export default function Accout() {
 
 function Sidebar({ type }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const { logoutMutation } = useLogout();
+  const navigate = useNavigate();
+  function handleLogout() {
+    logoutMutation();
+    navigate("/");
+  }
   const navigation = [
     { name: "الاعدادات", href: "/account", icon: FolderOpen },
     { name: "طرق الدفع", href: "/account/payment", icon: User },
@@ -93,22 +99,25 @@ function Sidebar({ type }) {
                 key={item.name}
                 to={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex flex-row-reverse gap-5 sidebar-item `}
+                className={`flex flex-row-reverse gap-5 sidebar-item hover:bg-green-50 p-2 rounded-2xl`}
               >
                 <item.icon className="w-5 h-5 mr-3" />
                 {item.name}
               </Link>
             ))}
             {type === "Provider" && (
-              <button className="w-full text-center bg-thirdBg rounded cursor-pointer font-semibold py-2 px-4">
+              <button className="w-full text-center hover:bg-green-400 bg-thirdBg rounded cursor-pointer font-semibold py-2 px-4">
                 شارك كمحل
               </button>
             )}
           </nav>
 
           <div className="px-4 py-6 border-t border-gray-200 space-y-5">
-            <button className="flex items-center justify-end sidebar-item cursor-pointer w-full text-red-600 hover:bg-red-50">
-              <CircleArrowLeft className="w-5 h-5 mr-3" />
+            <button className="flex items-center justify-end sidebar-item cursor-pointer w-full text-red-600 hover:bg-red-50 p-2 rounded-2xl">
+              <CircleArrowLeft
+                className="w-5 h-5 mr-3"
+                onClick={handleLogout}
+              />
               تسجيل الخروج
             </button>
           </div>
@@ -187,7 +196,7 @@ function UpdateInfor() {
     if (!error) navigate("/");
   };
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex bg-white rounded-2xl items-center justify-center">
       <div className="card w-full shadow-xl">
         <div className="card-body p-6 sm:p-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-right mb-6">

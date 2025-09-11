@@ -39,6 +39,7 @@ function App() {
         <Route index element={<Home />} />
         <Route element={<AppLayout />}>
           <Route path="/services" element={<Experiences />} />
+
           <Route path="account" element={<Accout />}>
             <Route path="payment" element={<Payment />} />
             <Route path="consultation" element={<Consultation />} />

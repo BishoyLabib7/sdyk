@@ -28,7 +28,7 @@ export default function Experiences() {
 
         <div className="w-full flex flex-col">
           <Categories handleOpen={setOpenFilter} />
-          {provider ? (
+          {provider && provider.length !== 0 ? (
             <div className="mt-5 px-5">
               {provider?.map((expert) => (
                 <ExpertCard

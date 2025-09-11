@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Consultation() {
-  return <div>Consultation</div>;
+  return <div className="bg-white rounded-2xl">consaltation</div>;
 }
