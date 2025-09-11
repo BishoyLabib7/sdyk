@@ -21,6 +21,11 @@ import NotFound from "./pages/NotFound.jsx";
 import Product from "./feathers/shop/Product.jsx";
 import CheckOut from "./pages/CheckOut.jsx";
 import Cart from "./pages/Cart.jsx";
+import Products from "./feathers/shop/Products.jsx";
+import Favourite from "./pages/Favourite.jsx";
+import Accout from "./pages/Accout.jsx";
+import Payment from "./feathers/shop/Payment.jsx";
+import Consultation from "./feathers/shop/Consultation.jsx";
 
 function App() {
   const { isLoading, authUser } = useAuthUser();
@@ -29,131 +34,137 @@ function App() {
   const isOnboarded = authUser?.isOnboarded;
   if (isLoading) return <PageLoader />;
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route element={<AppLayout />}>
-            <Route path="/services" element={<Experiences />} />{" "}
-            <Route path="/shop" element={<ShopPage />} />
-            <Route path="/shop/:id" element={<Product />} />
-            <Route path="/shop/Cart" element={<Cart />} />
-            <Route path="/shop/checkout" element={<CheckOut />} />{" "}
-            <Route
-              path="/friends"
-              element={
-                isAuthenticated && isOnboarded ? (
-                  <Friends />
-                ) : (
-                  <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
-                )
-              }
-            />
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route element={<AppLayout />}>
+          <Route path="/services" element={<Experiences />} />
+          <Route path="account" element={<Accout />}>
+            <Route path="payment" element={<Payment />} />
+            <Route path="consultation" element={<Consultation />} />
           </Route>
+
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/shop/categories/:name" element={<Products />} />
+          <Route path="/shop/product/:id" element={<Product />} />
+          <Route path="/shop/favourite" element={<Favourite />} />
+          <Route path="/shop/Cart" element={<Cart />} />
+          <Route path="/shop/checkout" element={<CheckOut />} />
           <Route
-            path="/home"
+            path="/friends"
             element={
               isAuthenticated && isOnboarded ? (
-                <Layout showSidebar={true}>
-                  <HomePage />
-                </Layout>
+                <Friends />
               ) : (
                 <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
               )
             }
           />
-          <Route
-            path="/signup"
-            element={
-              !isAuthenticated ? (
-                <SignUpPage />
-              ) : (
-                <Navigate to={isOnboarded ? "/" : "/onboarding"} />
-              )
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              !isAuthenticated ? (
-                <LoginPage />
-              ) : (
-                <Navigate to={isOnboarded ? "/" : "/onboarding"} />
-              )
-            }
-          />
-          <Route
-            path="/notifications"
-            element={
-              isAuthenticated && isOnboarded ? (
-                <Layout showSidebar={true}>
-                  <NotificationsPage />
-                </Layout>
-              ) : (
-                <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
-              )
-            }
-          />
-          <Route
-            path="/call/:id"
-            element={
-              isAuthenticated && isOnboarded ? (
-                <CallPage />
-              ) : (
-                <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
-              )
-            }
-          />
-          <Route
-            path="/chat/:id"
-            element={
-              isAuthenticated && isOnboarded ? (
-                <Layout showSidebar={false}>
-                  <ChatPage />
-                </Layout>
-              ) : (
-                <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
-              )
-            }
-          />
-          <Route
-            path="/onboarding"
-            element={
-              isAuthenticated ? (
-                !isOnboarded ? (
-                  <OnboardingPage />
-                ) : (
-                  <Navigate to="/" />
-                )
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>{" "}
-        <Toaster
-          position="top-center"
-          gutter={12}
-          containerStyle={{ margin: "8px" }}
-          toastOptions={{
-            success: {
-              duration: 3000,
-            },
-            error: {
-              duration: 5000,
-            },
-            style: {
-              fontSize: "16px",
-              maxWidth: "500px",
-              padding: "16px 24px",
-              backgroundColor: "#fff",
-              color: "#333448",
-            },
-          }}
+        </Route>
+        <Route
+          path="/home"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={true}>
+                <HomePage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
         />
-      </BrowserRouter>
-    </>
+        <Route
+          path="/signup"
+          element={
+            !isAuthenticated ? (
+              <SignUpPage />
+            ) : (
+              <Navigate to={isOnboarded ? "/" : "/onboarding"} />
+            )
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            !isAuthenticated ? (
+              <LoginPage />
+            ) : (
+              <Navigate to={isOnboarded ? "/" : "/onboarding"} />
+            )
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={true}>
+                <NotificationsPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
+        />
+        <Route
+          path="/call/:id"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <CallPage />
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
+        />
+        <Route
+          path="/chat/:id"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={false}>
+                <ChatPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
+        />
+        <Route
+          path="/onboarding"
+          element={
+            isAuthenticated ? (
+              !isOnboarded ? (
+                <OnboardingPage />
+              ) : (
+                <Navigate to="/" />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            backgroundColor: "#fff",
+            color: "#333448",
+          },
+        }}
+      />
+    </BrowserRouter>
   );
 }
 export default App;

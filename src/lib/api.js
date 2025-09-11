@@ -24,6 +24,7 @@ export const login = async (loginData) => {
   try {
     const response = await axiosInstance.post("/auth/login", loginData);
     const { token } = response.data;
+    console.log(response.data);
     Cookies.set("authToken", token, {
       expires: 7,
       secure: true,

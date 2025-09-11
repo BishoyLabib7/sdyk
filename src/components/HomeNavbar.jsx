@@ -7,11 +7,13 @@ import { FaXmark } from "react-icons/fa6";
 import useAuthUser from "../hooks/useAuthUser";
 import useLogout from "../hooks/useLogout";
 import {
+  ChartBarStacked,
   CircleUserRound,
   HeartPlus,
   ShoppingCart,
   SquareArrowLeft,
 } from "lucide-react";
+import { categories } from "../constants";
 
 const navItems = [
   { name: "الرئيسيه", link: "/" },
@@ -26,6 +28,7 @@ export default function Navbar({ type = "" }) {
   const { logoutMutation } = useLogout();
   const [navbar, setNavbar] = React.useState(false);
   const [minbar, setMinbar] = React.useState(false);
+  const [isOpenCategiores, setOpenCategiores] = React.useState(false);
 
   const url = useLocation().pathname.split("/")[1];
 
@@ -94,23 +97,32 @@ export default function Navbar({ type = "" }) {
                 url == "shop" ? "" : "hidden"
               }`}
             >
-              <HeartPlus className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+              <ChartBarStacked
+                onMouseEnter={() => setOpenCategiores(true)}
+                className="text-primaryBg lg:size-7 size-6 cursor-pointer"
+              />
+              <Link to="/shop/favourite">
+                <HeartPlus className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
+              </Link>
               <Link to="/shop/cart">
                 <ShoppingCart className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
               </Link>
+
               {authUser ? (
-                <div
-                  className={`flex gap-5 items-center text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]ont-bold lg:pl-5 pl-3 pr-0.5 rounded-full  transition duration-300 cursor-pointer `}
-                >
-                  <h1 className="font-bold">
-                    {authUser.fullName.split(" ")[0]}
-                  </h1>
-                  <img
-                    src={authUser.profilePicture}
-                    alt=""
-                    className=" rounded-full lg:size-10 size-8 "
-                  />
-                </div>
+                <Link to="/account">
+                  <div
+                    className={`flex gap-5 items-center text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]ont-bold lg:pl-5 pl-3 pr-0.5 rounded-full  transition duration-300 cursor-pointer `}
+                  >
+                    <h1 className="font-bold">
+                      {authUser.fullName.split(" ")[0]}
+                    </h1>
+                    <img
+                      src={authUser.profilePicture}
+                      alt=""
+                      className=" rounded-full lg:size-10 size-8 "
+                    />
+                  </div>
+                </Link>
               ) : (
                 <Link to="/login">
                   <CircleUserRound className="text-primaryBg lg:size-7 size-6 cursor-pointer" />
@@ -123,7 +135,7 @@ export default function Navbar({ type = "" }) {
                 url == "shop" ? "hidden" : ""
               }`}
             >
-              <Link to={`${isAuthenticated ? "/services" : "/signup"}`}>
+              <Link to={`${isAuthenticated ? "/account" : "/signup"}`}>
                 {isAuthenticated ? (
                   <div
                     className={`flex gap-5 justify-center items-center text-primaryBg bg-secondarBg hover:bg-thirdBg hover:text-[#fff]ont-bold lg:pl-5 pl-2  rounded-full  transition duration-300 cursor-pointer`}
@@ -167,6 +179,23 @@ export default function Navbar({ type = "" }) {
               </Link>
             </div>
           </div>
+
+          {/* categories */}
+          {isOpenCategiores && (
+            <div
+              onMouseLeave={() => setOpenCategiores(false)}
+              className="bg-white flex flex-col text-black absolute top-[100%] left-[15%] text-right font-semibold rounded p-3"
+            >
+              {categories.map((cate) => (
+                <Link
+                  to={`/shop/categories/${cate.name}`}
+                  className="mb-2 cursor-pointer hover:bg-thirdBg hover:rounded p-2"
+                >
+                  {cate.name}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {/* minbar */}
           <div className="flex flex-row-reverse items-center gap-4">
