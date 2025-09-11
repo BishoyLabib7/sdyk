@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
-function Sidebar({ close, type }) {
+function Sidebar({ close, type, isminbar }) {
   const navItems = [
     { name: "الرئيسيه", link: "/" },
     { name: "المتجر", link: "/shop" },
@@ -15,8 +15,11 @@ function Sidebar({ close, type }) {
   const isOnboarded = authUser?.isOnboarded;
   return (
     <aside
-      className={`w-64 h-screen top-0 fixed flex lg:hidden flex-col justify-start items-center gap-1 px-1 ${
+      dir="rtl"
+      className={`w-64 h-screen top-0 fixed flex lg:hidden flex-col justify-start items-center gap-1 left-0 transform transition-transform duration-300 ease-in-out ${
         type ? "py-1" : "py-11"
+      } ${
+        isminbar ? "translate-x-0" : "-translate-x-full"
       } bg-[#ffede8] z-50 right-0 shadow-2xl shadow-[rgba(91, 187, 123, 0.15)]`}
     >
       {type && (

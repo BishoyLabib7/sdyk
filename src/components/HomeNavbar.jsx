@@ -47,17 +47,16 @@ export default function Navbar({ type = "" }) {
 
   return (
     <>
-      {minbar && (
-        <Sidebar
-          type={type === "home" && !navbar}
-          close={() => setMinbar((minbar) => !minbar)}
-        />
-      )}
+      <Sidebar
+        type={type === "home" && !navbar}
+        close={() => setMinbar((minbar) => !minbar)}
+        isminbar={minbar}
+      />
 
       <div
         className={` lg:text-amber-50 body-font px-5 ${
           navbar || type !== "home"
-            ? "bg-[#ffede8] fixed w-full top-0 left-0 z-100 shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
+            ? "bg-[#ffede8] fixed w-full top-0 left-0  z-[100] shadow-lg shadow-[rgba(91, 187, 123, 0.15)]"
             : "bg-transparent"
         } transition-all duration-300`}
       >
@@ -65,7 +64,7 @@ export default function Navbar({ type = "" }) {
           {/* logo */}
           <img
             loading="lazy"
-            className="md:size-18 size-12"
+            className="md:size-18 size-12 z-50"
             src="/logo.webp"
             alt=""
           />
@@ -83,6 +82,7 @@ export default function Navbar({ type = "" }) {
                 <Link
                   to={link.link}
                   className={`font-semibold cursor-pointer px-3 py-1  hover:text-green-100 hover:bg-green-500 transition-all duration-300 rounded-lg  hover:scale-110 active`}
+                  onClick={() => setMinbar((minbar) => !minbar)}
                 >
                   {link.name}
                 </Link>

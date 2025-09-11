@@ -25,7 +25,7 @@ export default function Accout() {
       {isLoading ? (
         <PageLoader />
       ) : (
-        <div className="flex flex-row-reverse h-screen w-[90%] mx-auto mt-20">
+        <div className="flex lg:flex-row-reverse flex-col h-screen w-[90%] mx-auto mt-20">
           <Sidebar type={authUser.type} />
           <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
             {/* <Header /> */}
@@ -55,9 +55,10 @@ function Sidebar({ type }) {
     <>
       <button
         onClick={toggleMobileMenu}
-        className="lg:hidden  top-4 left-4 z-50 p-2 rounded-lg  shadow-lg border border-gray-200"
+        className="lg:hidden flex justify-between top-4 left-4 z-20 p-2 rounded-lg  shadow-lg border border-gray-200"
       >
         {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        باقى الاعدادات
       </button>
 
       {isMobileMenuOpen && (
@@ -69,7 +70,7 @@ function Sidebar({ type }) {
 
       <div
         className={`
-        fixed lg:static inset-y-0 left-0 z-50 w-64  border-r rounded-r-lg border-gray-200 transform transition-transform duration-300 ease-in-out
+        fixed lg:static inset-y-0 left-0 z-50 w-64 bg-sadykBg  border-r rounded-r-lg border-gray-200 transform transition-transform duration-300 ease-in-out
         ${
           isMobileMenuOpen
             ? "translate-x-0"
@@ -79,7 +80,7 @@ function Sidebar({ type }) {
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-center h-21 px-6 border-b border-gray-200">
-            <div className="flex items-center space-x-2">
+            <div className="flex  md:mt-0 mt-10 items-center space-x-2">
               <span className="text-xl font-bold text-gray-900">
                 اداره الحساب
               </span>
