@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://sydeek-api-qwtjg.sevalla.app/api"
+  status = 200
+  force = true
