@@ -172,7 +172,7 @@ function UpdateInfor() {
     const file = event.target.files[0];
     const sizeKB = (file.size / 1024).toFixed(2);
     if (sizeKB > 5) {
-      toast.error("error");
+      toast.error("ارفع صورة بحجم اصغر ");
 
       setFormState({
         ...formState,

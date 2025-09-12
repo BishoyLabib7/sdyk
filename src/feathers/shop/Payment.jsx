@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import useAuthUser from "../../hooks/useAuthUser";
 
 export default function Payment() {
   const [zip, setZip] = useState("");
   const [error, setError] = useState(false);
+  const { authUser } = useAuthUser();
   const [billingCycle, setBillingCycle] = useState("سنوي");
 
   const handleSubmit = (e) => {
@@ -72,7 +74,7 @@ export default function Payment() {
           type="email"
           placeholder="البريد الإلكتروني"
           className="w-full border rounded-lg p-3 mb-4 outline-none text-gray-700 text-right"
-          defaultValue="bishoytest4@gmail.com"
+          defaultValue={authUser.email}
         />
 
         {/* الرمز البريدي */}
