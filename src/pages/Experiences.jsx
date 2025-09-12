@@ -30,17 +30,20 @@ export default function Experiences() {
           <Categories handleOpen={setOpenFilter} />
           {provider && provider.length !== 0 ? (
             <div className="mt-5 px-5">
-              {provider?.map((expert) => (
-                <ExpertCard
-                  key={expert._id}
-                  id={provider?.[0]?._id}
-                  img={expert.profilePicture}
-                  name={expert.fullName}
-                  jop={expert.specialization}
-                  experiences={expert.yearsOfExpirence}
-                  price={expert.price}
-                />
-              ))}
+              {provider?.map(
+                (expert) =>
+                  expert.specialization && (
+                    <ExpertCard
+                      key={expert._id}
+                      id={provider?.[0]?._id}
+                      img={expert.profilePicture}
+                      name={expert.fullName}
+                      jop={expert.specialization}
+                      experiences={expert.yearsOfExpirence}
+                      price={expert.price}
+                    />
+                  )
+              )}
             </div>
           ) : (
             <NoData text="لا يوجد خبراء حالياً" />

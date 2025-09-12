@@ -128,7 +128,7 @@ const SignUpPage = () => {
                       <option value="User" defaultValue={"User"}>
                         مستخدم
                       </option>
-                      <option value="Provider">خبير</option>
+                      <option value="Provider">تاجر / خبير</option>
                     </select>
                     <p className="text-xs opacity-70 mt-1">
                       يجب اختيار نوع الحساب بعناية، حيث لا يمكن تغييره لاحقًا.

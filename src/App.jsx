@@ -26,6 +26,7 @@ import Favourite from "./pages/Favourite.jsx";
 import Accout from "./pages/Accout.jsx";
 import Payment from "./feathers/shop/Payment.jsx";
 import Consultation from "./feathers/shop/Consultation.jsx";
+import MyProducts from "./feathers/shop/MyProducts.jsx";
 
 function App() {
   const { isLoading, authUser } = useAuthUser();
@@ -43,6 +44,7 @@ function App() {
           <Route path="account" element={<Accout />}>
             <Route path="payment" element={<Payment />} />
             <Route path="consultation" element={<Consultation />} />
+            <Route path="myProducts" element={<MyProducts />} />
           </Route>
 
           <Route path="/shop" element={<ShopPage />} />

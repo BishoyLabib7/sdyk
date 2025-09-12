@@ -94,22 +94,26 @@ function Sidebar({ type }) {
           </div>
 
           <nav className="flex-1  px-4 py-6 space-y-10">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex flex-row-reverse gap-5 sidebar-item hover:bg-green-50 p-2 rounded-2xl`}
-              >
-                <item.icon className="w-5 h-5 mr-3" />
-                {item.name}
-              </Link>
-            ))}
-            {type === "Provider" && (
+            {navigation.map((item) =>
+              item.href === "/account/consultation" ? (
+                type === "Provider" && null
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex flex-row-reverse gap-5 sidebar-item hover:bg-green-50 p-2 rounded-2xl`}
+                >
+                  <item.icon className="w-5 h-5 mr-3" />
+                  {item.name}
+                </Link>
+              )
+            )}
+            {/* {type === "Provider" && (
               <button className="w-full text-center hover:bg-green-400 bg-thirdBg rounded cursor-pointer font-semibold py-2 px-4">
                 شارك كمحل
               </button>
-            )}
+            )} */}
           </nav>
 
           <div className="px-4 py-6 border-t border-gray-200 space-y-5">
@@ -133,14 +137,13 @@ function UpdateInfor() {
 
   const [formState, setFormState] = useState({
     fullName: authUser?.fullName || "",
-    bio: authUser?.bio || "",
-    nativeLanguage: authUser?.nativeLanguage || "english",
-    learningLanguage: "english",
+    bio: authUser?.bio || " ",
+    nameOfCompany: authUser?.nameOfCompany || "",
     location: authUser?.location || "",
     profilePicture: authUser?.profilePicture || "",
-    price: 0,
-    yearsOfExperience: 0,
-    specialization: "",
+    price: authUser?.price || 0,
+    yearsOfExpirence: authUser?.yearsOfExpirence || 0,
+    specialization: authUser?.specialization || "",
   });
 
   const {
@@ -275,58 +278,31 @@ function UpdateInfor() {
               </div>
             </div>
 
-            {/* BIO */}
-            <div
-              dir="rtl"
-              className="form-control w-full flex justify-content-end gap-2 "
-            >
-              <label className="label flex justify-end mb-2 text-right">
-                <span className="label-text">السيرة الذاتية</span>
-              </label>
-              <textarea
-                name="bio"
-                value={formState.bio}
-                onChange={(e) =>
-                  setFormState({ ...formState, bio: e.target.value })
-                }
-                className="textarea bg-gray-200  textarea-bordered h-24 text-right w-full"
-                placeholder="شاركنا قصتك: من أنت؟ ما هي خلفيتك؟ ما الذي دفعك لاختيار هذا المسار؟ وما هي أهم المهارات والخبرات التي اكتسبتها؟"
-              />
-            </div>
             {authUser.type === "Provider" && (
               <>
+                {" "}
+                {/* BIO */}
+                <div
+                  dir="rtl"
+                  className="form-control w-full flex justify-content-end gap-2 "
+                >
+                  <label className="label flex justify-end mb-2 text-right">
+                    <span className="label-text">السيرة الذاتية</span>
+                  </label>
+                  <textarea
+                    name="bio"
+                    value={formState.bio}
+                    onChange={(e) =>
+                      setFormState({ ...formState, bio: e.target.value })
+                    }
+                    className="textarea bg-gray-200  textarea-bordered h-24 text-right w-full"
+                    placeholder="شاركنا قصتك: من أنت؟ ما هي خلفيتك؟ ما الذي دفعك لاختيار هذا المسار؟ وما هي أهم المهارات والخبرات التي اكتسبتها؟"
+                  />
+                </div>
                 <div
                   dir="rtl"
                   className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
-                  {/* NATIVE LANGUAGE */}
-                  <div className="form-control ">
-                    <label className="label">
-                      <span className="label-text">اللغة الأم</span>
-                    </label>
-                    <select
-                      name="nativeLanguage"
-                      value={formState.nativeLanguage}
-                      onChange={(e) =>
-                        setFormState({
-                          ...formState,
-                          nativeLanguage: e.target.value,
-                        })
-                      }
-                      className="select bg-gray-200  select-bordered w-full"
-                    >
-                      <option value="">اختر لغتك الأم</option>
-                      {LANGUAGES.map((lang) => (
-                        <option
-                          key={`native-${lang}`}
-                          value={lang.toLowerCase()}
-                        >
-                          {lang}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">تخصصك</span>
@@ -354,7 +330,6 @@ function UpdateInfor() {
                     </select>
                   </div>
                 </div>
-
                 <div
                   dir="rtl"
                   className="grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -367,11 +342,11 @@ function UpdateInfor() {
                     <input
                       type="number"
                       name="experience"
-                      value={formState.yearsOfExperience}
+                      value={formState.yearsOfExpirence}
                       onChange={(e) =>
                         setFormState({
                           ...formState,
-                          yearsOfExperience: e.target.value,
+                          yearsOfExpirence: e.target.value,
                         })
                       }
                       className="input bg-gray-200  input-bordered w-full pl-10"
@@ -398,13 +373,40 @@ function UpdateInfor() {
                     />
                   </div>
                 </div>
+                {/* التاجر */}
+                <h2 className="text-right text-xl font-semibold">
+                  بيانات التاجر
+                </h2>
+                <div
+                  dir="rtl"
+                  className="grid grid-cols-1  md:grid-cols-2 gap-4"
+                >
+                  {/* name*/}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">اسم الشركة</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formState.nameOfCompany}
+                      onChange={(e) =>
+                        setFormState({
+                          ...formState,
+                          nameOfCompany: e.target.value,
+                        })
+                      }
+                      className="input input-bordered bg-gray-200 w-full pl-10"
+                    />
+                  </div>
+                </div>
               </>
             )}
 
             {/* SUBMIT BUTTON */}
 
             <button
-              className="btn btn-primary w-full"
+              className="btn  w-full bg-green-800 border border-green-800"
               disabled={isPending}
               type="submit"
             >

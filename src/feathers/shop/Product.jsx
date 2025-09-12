@@ -49,7 +49,6 @@ export default function Product() {
   const [size, setSize] = useState(2);
   const [color, setColor] = useState(2);
   const id = useParams();
-  console.log(id);
 
   return (
     <>

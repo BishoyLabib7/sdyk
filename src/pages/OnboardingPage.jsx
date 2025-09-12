@@ -18,9 +18,8 @@ const OnboardingPage = () => {
 
   const [formState, setFormState] = useState({
     fullName: authUser?.fullName || "",
-    bio: authUser?.bio || "",
-    nativeLanguage: authUser?.nativeLanguage || "english",
-    learningLanguage: "english",
+    bio: authUser?.bio || " ",
+    nameOfCompany: authUser?.nameOfCompany || "",
     location: authUser?.location || "",
     profilePicture: authUser?.profilePicture || "",
     price: 0,
@@ -142,59 +141,56 @@ const OnboardingPage = () => {
                 placeholder="ادخل اسمك بكامل"
               />
             </div>
-
-            {/* BIO */}
-            <div
-              dir="rtl"
-              className="form-control w-full flex justify-content-end gap-2 "
-            >
-              <label className="label flex justify-end mb-2 text-right">
-                <span className="label-text">السيرة الذاتية</span>
+            {/* LOCATION */}
+            <div className="form-control">
+              <label className="label  flex justify-end mb-2 text-right ">
+                <span className="label-text ">العنوان</span>
               </label>
-              <textarea
-                name="bio"
-                value={formState.bio}
-                onChange={(e) =>
-                  setFormState({ ...formState, bio: e.target.value })
-                }
-                className="textarea textarea-bordered h-24 text-right w-full"
-                placeholder="شاركنا قصتك: من أنت؟ ما هي خلفيتك؟ ما الذي دفعك لاختيار هذا المسار؟ وما هي أهم المهارات والخبرات التي اكتسبتها؟"
-              />
+              <div className="relative">
+                <MapPinIcon className="absolute top-1/2 transform -translate-y-1/2 left-3 size-5 text-base-content opacity-70" />
+                <input
+                  type="text"
+                  name="location"
+                  value={formState.location}
+                  onChange={(e) =>
+                    setFormState({ ...formState, location: e.target.value })
+                  }
+                  className="input input-bordered w-full pl-10 text-right"
+                  placeholder="المدينة، الدولة"
+                />
+              </div>
             </div>
+
             {authUser.type === "Provider" && (
               <>
+                {/* BIO */}
+                <div
+                  dir="rtl"
+                  className="form-control w-full flex justify-content-end gap-2 "
+                >
+                  <label className="label flex justify-end mb-2 text-right">
+                    <span className="label-text">السيرة الذاتية</span>
+                  </label>
+                  <textarea
+                    name="bio"
+                    value={formState.bio}
+                    onChange={(e) =>
+                      setFormState({ ...formState, bio: e.target.value })
+                    }
+                    className="textarea textarea-bordered h-24 text-right w-full"
+                    placeholder="شاركنا قصتك: من أنت؟ ما هي خلفيتك؟ ما الذي دفعك لاختيار هذا المسار؟ وما هي أهم المهارات والخبرات التي اكتسبتها؟"
+                  />
+                </div>
+
+                {/* خبير */}
+                <h2 className="text-right text-xl font-semibold">
+                  بيانات الخبير
+                </h2>
+
                 <div
                   dir="rtl"
                   className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
-                  {/* NATIVE LANGUAGE */}
-                  <div className="form-control ">
-                    <label className="label">
-                      <span className="label-text">اللغة الأم</span>
-                    </label>
-                    <select
-                      name="nativeLanguage"
-                      value={formState.nativeLanguage}
-                      onChange={(e) =>
-                        setFormState({
-                          ...formState,
-                          nativeLanguage: e.target.value,
-                        })
-                      }
-                      className="select select-bordered w-full"
-                    >
-                      <option value="">اختر لغتك الأم</option>
-                      {LANGUAGES.map((lang) => (
-                        <option
-                          key={`native-${lang}`}
-                          value={lang.toLowerCase()}
-                        >
-                          {lang}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">تخصصك</span>
@@ -221,12 +217,7 @@ const OnboardingPage = () => {
                       ))}
                     </select>
                   </div>
-                </div>
 
-                <div
-                  dir="rtl"
-                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                >
                   {/* experience */}
                   <div className="form-control ">
                     <label className="label">
@@ -246,7 +237,12 @@ const OnboardingPage = () => {
                       placeholder="5 سنوات"
                     />
                   </div>
+                </div>
 
+                <div
+                  dir="rtl"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
                   {/* price*/}
                   <div className="form-control">
                     <label className="label">
@@ -266,27 +262,37 @@ const OnboardingPage = () => {
                     />
                   </div>
                 </div>
+
+                {/* التاجر */}
+                <h2 className="text-right text-xl font-semibold">
+                  بيانات التاجر
+                </h2>
+
+                <div
+                  dir="rtl"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
+                  {/* name*/}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">اسم الشركة</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formState.nameOfCompany}
+                      onChange={(e) =>
+                        setFormState({
+                          ...formState,
+                          nameOfCompany: e.target.value,
+                        })
+                      }
+                      className="input input-bordered w-full pl-10"
+                    />
+                  </div>
+                </div>
               </>
             )}
-            {/* LOCATION */}
-            <div className="form-control">
-              <label className="label  flex justify-end mb-2 text-right ">
-                <span className="label-text ">العنوان</span>
-              </label>
-              <div className="relative">
-                <MapPinIcon className="absolute top-1/2 transform -translate-y-1/2 left-3 size-5 text-base-content opacity-70" />
-                <input
-                  type="text"
-                  name="location"
-                  value={formState.location}
-                  onChange={(e) =>
-                    setFormState({ ...formState, location: e.target.value })
-                  }
-                  className="input input-bordered w-full pl-10 text-right"
-                  placeholder="المدينة، الدولة"
-                />
-              </div>
-            </div>
 
             {/* SUBMIT BUTTON */}
 

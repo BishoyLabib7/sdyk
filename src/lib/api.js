@@ -5,12 +5,6 @@ import Cookies from "js-cookie";
 export const signup = async (signupData) => {
   try {
     const response = await axiosInstance.post("/auth/signup", signupData);
-    const { token } = response.data;
-    Cookies.set("authToken", token, {
-      expires: 7,
-      secure: true,
-      sameSite: "Strict",
-    });
     return response.data;
   } catch (error) {
     error?.message == "Network Error"
@@ -23,13 +17,6 @@ export const signup = async (signupData) => {
 export const login = async (loginData) => {
   try {
     const response = await axiosInstance.post("/auth/login", loginData);
-    const { token } = response.data;
-    console.log(response.data);
-    Cookies.set("authToken", token, {
-      expires: 7,
-      secure: true,
-      sameSite: "Strict",
-    });
     return response.data;
 
     // Navigate to another page or update state

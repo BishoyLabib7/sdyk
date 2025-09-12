@@ -78,7 +78,25 @@ export default function Navbar({ type = "" }) {
             {navItems.map((link) =>
               link.link === "/friends" &&
               !isAuthenticated &&
-              !isOnboarded ? null : (
+              !isOnboarded ? null : link.link === "/shop" ? (
+                !authUser?.nameOfCompany ? (
+                  <Link
+                    to={link.link}
+                    className={`font-semibold cursor-pointer px-3 py-1  hover:text-green-100 hover:bg-green-500 transition-all duration-300 rounded-lg  hover:scale-110 active`}
+                    onClick={() => setMinbar((minbar) => !minbar)}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <Link
+                    to="/account/myProducts"
+                    className={`font-semibold cursor-pointer px-3 py-1  hover:text-green-100 hover:bg-green-500 transition-all duration-300 rounded-lg  hover:scale-110 active`}
+                    onClick={() => setMinbar((minbar) => !minbar)}
+                  >
+                    المنتجات
+                  </Link>
+                )
+              ) : (
                 <Link
                   to={link.link}
                   className={`font-semibold cursor-pointer px-3 py-1  hover:text-green-100 hover:bg-green-500 transition-all duration-300 rounded-lg  hover:scale-110 active`}
